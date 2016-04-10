@@ -1,0 +1,27 @@
+Game Reqs:
+
+	Base:
+		Movement: Arrow Keys, 
+		Maze: Algorithm
+		Graphical Objects: Coins, Moles, Player character, obstruction components
+		UI: Score, Lives, Time they have left, menu button
+		Objects for the corresponding graphical objects and UI Along with their logic
+		Collision detector
+
+	Add-ins:
+		Movement: speedup with stamina
+		Boss Fight:
+		Graphical Objects: Sprites, boss fight character
+		UI: Menu, highscore
+		Objects for the corresponding graphical objects and UI Along with their logic
+		Fog
+		Thing chasing you
+
+
+Game Logic:
+
+	Goal: Reach the very end level and get through the last door
+
+	Interaction between all the components: If a player hits a coin it they pick it up
+
+	As they advance through the levels, parts will get tougher: ie, smaller field of view, more moles, tougher placed coins.

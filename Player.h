@@ -7,7 +7,6 @@ class Player : public Collideable
 {
 	Stats* stats;
 	public:
-		Player();
 		Player(const Stats & stats);
 		void onCollision(const Collideable * c);
 		void draw();

@@ -3,16 +3,17 @@
 #include "Collideable.h"
 #include "Stats.h"
 
-class Player
+class Player : public Collideable
 {
 	Stats* stats;
 public:
 	Player();
-	Player(const Stats & stats);
+	Player(const Stats & stats = NULL);
 	void onCollision(const Collideable * c);
 	void draw();
 	
 	void update(const Stats & stats);
+	void update(float x, float y, float w, float h);
 	Stats* getStats();
 };
 

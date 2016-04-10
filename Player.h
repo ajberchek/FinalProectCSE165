@@ -6,15 +6,14 @@
 class Player : public Collideable
 {
 	Stats* stats;
-public:
-	Player();
-	Player(const Stats & stats = NULL);
-	void onCollision(const Collideable * c);
-	void draw();
+	public:
+		Player();
+		Player(const Stats & stats);
+		void onCollision(const Collideable * c);
+		void draw();
 	
-	void update(const Stats & stats);
-	void update(float x, float y, float w, float h);
-	Stats* getStats();
+		void update(const Stats & stats);
+		Stats* getStats();
 };
 
 #endif 

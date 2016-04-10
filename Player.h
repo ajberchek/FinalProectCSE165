@@ -6,14 +6,14 @@
 class Player
 {
 	Stats* stats;
-public:
-	Player();
-	Player(const Stats & stats);
-	void onCollision(const Collideable * c);
-	void draw();
+	public:
+		Player();
+		Player(const Stats & stats);
+		void onCollision(const Collideable * c);
+		void draw();
 	
-	void update(const Stats & stats);
-	Stats* getStats();
+		void update(const Stats & stats);
+		Stats* getStats();
 };
 
 #endif 

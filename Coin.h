@@ -5,7 +5,9 @@ class Coin
 {
 	int coinValue;
 	public:
-		onCollision(const Collideable & c);
+		virtual void onCollision(const Collideable & c);
+		
+		
 };
 
 #endif

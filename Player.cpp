@@ -12,7 +12,7 @@ void Player::void onCollision(const Collideable * c)
 }
 // Need Avery to explain/implement after all the other Collideable
 // is implemented in this comment
-void Player::void draw()
+void Player::void draw(Animation *)
 {
 	
 }

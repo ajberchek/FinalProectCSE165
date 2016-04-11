@@ -8,6 +8,7 @@ class Player : public Collideable
 	Stats* stats;
 	public:
 		Player(const Stats & stats);
+		Player(const Animation & toAdd);
 		void onCollision(const Collideable * c);
 		void draw();
 	

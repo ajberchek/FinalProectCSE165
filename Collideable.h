@@ -12,6 +12,6 @@ class Collideable()
 public:
 	virtual onCollision(const Collideable *c) = 0;
 	virtual draw(Animation *) = 0;
-	void update(float x = x, float y = y, float w = w, float h = h);
+	void update(float x, float y, float w, float h);
 };
 #endif

@@ -27,3 +27,9 @@ Stats& getStats()
 {
 	return stats;
 }
+// Pushing animations
+// 
+void pushAnimation(const Animation & toAdd)
+{
+	
+}

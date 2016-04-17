@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Collideable.h"
-#include "Stats.h"
+#include "../StatsFolder/Stats.h"
 
 class Player : public Collideable
 {

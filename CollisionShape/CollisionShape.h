@@ -15,7 +15,4 @@ class CollisionShape
 			height = _h;
 		}
 };
-
-
-
 #endif

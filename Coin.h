@@ -9,8 +9,8 @@ class Coin : public Collideable
 	int coinValue;
 	public:
 		Coin();
-		virtual void onCollision(const Collideable & c);
-		virtual void draw(Animation * c);
+		void onCollision(const Collideable & c);
+		void draw(Animation * c);
 		int getCoinValue();
 		void setCoinValue(int val);
 		void pushAnimation(const Animation & toAdd)

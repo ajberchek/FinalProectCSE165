@@ -19,5 +19,6 @@ class Collideable
 		int getW();
 		int getH();
 		int getSpeed();
+		vector<Animation *> getAnim();
 };
 #endif

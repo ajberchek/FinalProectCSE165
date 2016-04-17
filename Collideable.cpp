@@ -38,3 +38,8 @@ int Collideable::getSpeed()
 {
 	return maxSpeed;
 }
+
+vector<Animation *> Collideable::getAnim()
+{
+	return anim;
+}

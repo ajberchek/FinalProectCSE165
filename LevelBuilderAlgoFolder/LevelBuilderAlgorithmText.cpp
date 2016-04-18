@@ -1,21 +1,22 @@
-#include "MazeAlgorithmText.h"
+#include "LevelBuilderAlgorithmText.h"
 #include <iostream>
 #include <fstream>
 #include "../CollideableFolder/Wall.h"
 
 using namespace std;
 
-MazeAlgorithmText::MazeAlgorithmText(string mazeFile)
+LevelBuilderAlgorithmText::LevelBuilderAlgorithmText(string mazeFile)
 {
-	fileForMaze = mazeFile;
+	fileForLvl = mazeFile;
 }
 
-void MazeAlgorithmText::genMaze(CollideableContainer * cc)
+void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 {
 	int count = 0;
-	cout << "Generating maze with filepath: " << fileForMaze << endl;
+
+	cout << "Generating Level with filepath: " << fileForLvl << endl;
 	string line;
-	ifstream mazeFile(fileForMaze.c_str());
+	ifstream mazeFile(fileForLvl.c_str());
 	if(mazeFile.is_open())
 	{
 		while(getline(mazeFile,line))

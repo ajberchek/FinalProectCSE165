@@ -6,9 +6,10 @@ class CollideableContainer
 {
 	public:
 		vector<vector<Collideable *> *> * collideableFieldPtr;
-		CollideableContainer()
+		CollideableContainer();
+		vector<Mole *> * getMoles()
 		{
-			collideableFieldPtr = new vector<vector<Collideable *> *>();
+			
 		}
 };
 #endif

@@ -20,10 +20,16 @@ void Player::void onCollision(const Collideable * c)
 // Need Avery to explain/implement after all the other Collideable
 // is implemented in this comment
 
-void Player::void draw(Animation *)
+void Player::void draw(Animation * toDraw)
 {
 	vector<Animation *> temp = getAnim();
-	temp.at(0)->animate(this->getX(), this->getY(), this->getW(), this->getH());		// Is the animation always at 0? - Hang
+	for (int i = 0; i < temp.size(); i++)
+	{
+		if (temp.at(i) == toDraw)
+		{
+			temp.at(i)->animate();
+		}
+	}
 }
 
 // Update the stats private member

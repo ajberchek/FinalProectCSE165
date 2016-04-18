@@ -14,7 +14,6 @@ class Player : public Collideable
 	
 		void update(const Stats & stats);
 		Stats* getStats();
-		void pushAnimation(const Animation & toAdd);
 };
 
 #endif 

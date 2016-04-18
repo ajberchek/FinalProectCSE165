@@ -19,6 +19,7 @@ class Collideable
 		int getW();
 		int getH();
 		int getSpeed();
+		void pushAnimation(const Animation & toAdd);
 		vector<Animation *> getAnim();
 };
 #endif

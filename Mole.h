@@ -11,14 +11,13 @@ class Mole : public Collideable
 		Mole(long = 0, bool = false);
 		void onCollision(const Collideable * c);
 		void draw(Animation *);
-		void update(long current);
+		void update(long, bool);
 		void pushAnimation(const Animation & toAdd);
-		
 		
 		long getTime();
 		bool getState();
-		void setTime();
-		void setState();
+		void setTime(long Time);
+		void setState(bool State);
 };
 
 #endif 

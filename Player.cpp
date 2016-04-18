@@ -28,6 +28,7 @@ void Player::void draw(Animation * toDraw)
 		if (temp.at(i) == toDraw)
 		{
 			temp.at(i)->animate();
+			break;
 		}
 	}
 }
@@ -44,11 +45,4 @@ void Player::update(const Stats & stats)
 Stats& Player::getStats()
 {
 	return stats;
-}
-// Pushing animations
-
-void Player::pushAnimation(const Animation & toAdd)
-{
-	vector<Animation *> temp = getAnim();
-	temp.push_back(toAdd);
 }

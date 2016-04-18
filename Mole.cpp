@@ -29,12 +29,6 @@ void Mole::update(long Time, bool State)
 	setTime(Time);
 }
 
-void Player::pushAnimation(const Animation & toAdd)
-{
-	vector<Animation *> temp = getAnim();
-	temp.push_back(toAdd);
-}
-
 void Mole::draw(Animation *)
 {
 	vector<Animation *> temp = getAnim();
@@ -43,6 +37,7 @@ void Mole::draw(Animation *)
 		if (temp.at(i) == toDraw)
 		{
 			temp.at(i)->animate();
+			break;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Collideable.h"
-#include "../StatsFolder/Stats.h"
+#include "Stats.h"
 
 class Player : public Collideable
 {
@@ -14,7 +14,6 @@ class Player : public Collideable
 	
 		void update(const Stats & stats);
 		Stats* getStats();
-		void pushAnimation(const Animation & toAdd);
 };
 
 #endif 

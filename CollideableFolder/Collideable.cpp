@@ -39,6 +39,12 @@ int Collideable::getSpeed()
 	return maxSpeed;
 }
 
+void Collideable::pushAnimation(const Animation & toAdd)
+{
+	vector<Animation *> temp = getAnim();
+	temp.push_back(toAdd);
+}
+
 vector<Animation *> Collideable::getAnim()
 {
 	return anim;

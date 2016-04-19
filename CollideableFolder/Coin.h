@@ -13,9 +13,6 @@ class Coin : public Collideable
 		void draw(Animation * c);
 		int getCoinValue();
 		void setCoinValue(int val);
-		void pushAnimation(const Animation & toAdd)
-		
-		
 };
 
 #endif

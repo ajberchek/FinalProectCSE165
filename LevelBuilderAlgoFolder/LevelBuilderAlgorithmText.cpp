@@ -2,6 +2,10 @@
 #include <iostream>
 #include <fstream>
 #include "../CollideableFolder/Wall.h"
+#include "../CollideableFolder/Mole.h"
+#include "../CollideableFolder/Coin.h"
+#include "../CollideableFolder/Player.h"
+#include "../CollideableFolder/Door.h"
 
 using namespace std;
 
@@ -34,11 +38,23 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 				{
 					currentRow->push_back(0);
 				}
-				if(line[i] == '#')
+				if(line[i] == 'm')
 				{
-					//This is the symbol indicating a wall, so we will create a wall in our vector
-					currentRow->at(i) = new Wall();
+					currentRow->at(i) = new Mole();
 				}
+				else if(line[i] == 'c')
+				{
+					currentRow->at(i) = new Coin();
+				}
+				else if(line[i] == 'd')
+				{
+					currentRow->at(i) = new Door();
+				}
+				else if(line[i] == 'p')
+				{
+					currentRow->at(i) = new Player();
+				}
+
 			}
 			cc->collideableFieldPtr->at(count) = currentRow;
 			count++;

@@ -2,7 +2,7 @@
 #define COIN_H
 
 #include "Collideable.h"
-#include "Animation.h"
+#include "../AnimationFolder/Animation.h"
 
 class Coin : public Collideable
 {
@@ -10,7 +10,7 @@ class Coin : public Collideable
 	public:
 		Coin();
 		void onCollision(const Collideable & c);
-		void draw(Animation * c);
+		void draw(const Animation & c);
 		int getCoinValue();
 		void setCoinValue(int val);
 };

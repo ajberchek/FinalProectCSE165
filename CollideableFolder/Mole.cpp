@@ -1,3 +1,4 @@
+#include "Mole.h"
 Mole::Mole(long time, bool state)
 {
 	update(time, State);

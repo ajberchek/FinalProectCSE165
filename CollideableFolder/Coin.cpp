@@ -1,3 +1,4 @@
+#include "Coin.h"
 // What do constructor do?
 Coin::Coin()
 {
@@ -20,9 +21,10 @@ void Coin::onCollision(const Collideable & c)
 	
 }
 
-void Coin::draw(Animation *c)
+void Coin::draw(const Animation & c)
 {
 	vector<Animation *> temp = getAnim();
+	Animation * toDraw = const_cast<Animation *>(&c);
 	for (int i = 0; i < temp.size(); i++)
 	{
 		if (temp.at(i) == toDraw)

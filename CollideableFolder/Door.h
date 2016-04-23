@@ -1,7 +1,7 @@
 #ifndef DOOR_H
 #define DOOR_H
 #include "Collideable.h"
-#include "Stats.h"
+#include "../StatsFolder/Stats.h"
 
 class Door : public Collideable
 {

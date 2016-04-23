@@ -1,3 +1,4 @@
+#include "Door.h"
 Door::Door(bool state)
 {
 	setState(state);

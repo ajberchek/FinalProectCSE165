@@ -1,7 +1,7 @@
 #ifndef MOLE_H
 #define MOLE_H
 #include "Collideable.h"
-#include "Stats.h"
+#include "../StatsFolder/Stats.h"
 
 class Mole : public Collideable
 {

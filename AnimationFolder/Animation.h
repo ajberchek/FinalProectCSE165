@@ -1,4 +1,7 @@
+
+
+
 class Animation
 {
-
+		Vec<image *>
 };

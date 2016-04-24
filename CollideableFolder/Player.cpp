@@ -14,14 +14,14 @@ Player::Player(const Animation * toAdd)
 
 void Player::onCollision(const Collideable * c)
 {
-	Door door;
-	Wall wall;
-	Coin coin;
-	Mole mole;
-	if (typeid(c) == typeid(wall)) {}
-	else if (typeid(c) == typeid(door)) {}
-	else if (typeid(c) == typeid(coin)) {}
-	else if (typeid(c) == typeid(mole)) {}
+	//Door door;
+	//Wall wall;
+	//Coin coin;
+	//Mole mole;
+	if (typeid(c) == typeid(Door)) {}
+	else if (typeid(c) == typeid(Wall)) {}
+	else if (typeid(c) == typeid(Coin)) {}
+	else if (typeid(c) == typeid(Mole)) {}
 	else 
 	{
 		std::cout<<"Player colliding with player!!! How strange!"<<std::endl;

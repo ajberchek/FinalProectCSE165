@@ -10,7 +10,6 @@ class Door : public Collideable
 		Door(bool = false);
 		void onCollision(const Collideable * c);
 		void draw(Animation *);
-		
 		bool getState();
 		void setState(bool);
 };

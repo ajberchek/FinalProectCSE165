@@ -35,7 +35,7 @@ int LoadGLTextures()									// Load Bitmaps And Convert To Textures
 	/* load an image file directly as a new OpenGL texture */
 	texture[0] = SOIL_load_OGL_texture
 		(
-		"Data/NeHe.bmp",
+		"Data/moleHoleWithoutMole.bmp",
 		SOIL_LOAD_AUTO,
 		SOIL_CREATE_NEW_ID,
 		SOIL_FLAG_INVERT_Y
@@ -101,12 +101,19 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
 
-	glBegin(GL_QUADS);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0.0f, 1.0f); glVertex2d(0.0f, 1.0f);			// 0,0
+	glTexCoord2f(1.0f, 1.0f); glVertex2d(1.0f, 1.0f);			// 1,0
+	glTexCoord2f(1.0f, 0.0f); glVertex2d(1.0f, 0.0f);			// 1,1
+	glTexCoord2f(0.0f, 0.0f); glVertex2d(0.0f, 0.0f);			// 0,1
+	glEnd();
+	//glBegin(GL_QUADS);
 		// Front Face
-		glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
-		glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
-		glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
-		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
+	//	glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
+		//glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);
+	//	glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);
+	//	glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
+		/*
 		// Back Face
 		glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f, -1.0f);
 		glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
@@ -132,11 +139,12 @@ int DrawGLScene(GLvoid)									// Here's Where We Do All The Drawing
 		glTexCoord2f(1.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
 		glTexCoord2f(1.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);
 		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f, -1.0f);
-	glEnd();
+		*/
+	//glEnd();
 
-	xrot+=0.3f;
-	yrot+=0.2f;
-	zrot+=0.4f;
+	//xrot+=0.3f;
+	//yrot+=0.2f;
+	//zrot+=0.4f;
 	return TRUE;										// Keep Going
 }
 

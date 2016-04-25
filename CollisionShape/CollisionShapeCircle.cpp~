@@ -65,9 +65,9 @@ bool CollisionShapeCircle::isOverlap(const CollisionShape * cs)
 					return true;
 				}
 			}
-			if(nonConstCS->getY()-nonConstCS->getHeight() <= y+sqrt(pow(width, 2.0) - pow(nonConstCS->getX()+ nonConstCS->getWidth(), 2.0)))//bottom right cor
+			if(nonConstCS->getY()-nonConstCS->getHeight() <= sqrt(pow(width, 2.0) - pow(nonConstCS->getX()+ nonConstCS->getWidth(), 2.0)))//bottom right cor
 			{
-				if(nonConstCS->getY()-nonConstCS->getHeight() >= y-1.0*sqrt(pow(width, 2.0) - pow(nonConstCS->getX()+ nonConstCS->getWidth(), 2.0)))
+				if(nonConstCS->getY()-nonConstCS->getHeight() >= -1.0*sqrt(pow(width, 2.0) - pow(nonConstCS->getX()+ nonConstCS->getWidth(), 2.0)))
 				{
 					return true;
 				}

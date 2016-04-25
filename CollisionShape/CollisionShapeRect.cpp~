@@ -83,16 +83,16 @@ bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 		//Check if the line of the rectagle intersects with the circle
 		if(nonConstCS->getX() + nonConstCS->getWidth()>= x && nonConstCS->getX()-nonConstCS->getWidth()<= x)// checks the left corner is in the circle
 		{
-			if(y <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))		//upper left corner
+			if(y <= sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))		//upper left corner
 			{
-				if(y >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))
+				if(y >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))
 				{
 					return true;
 				}
 			}
 			else if(y-height <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))//bottom left cor
 			{
-				if(y-height >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))
+				if(y-height >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))
 				{
 					return true;
 				}
@@ -101,16 +101,16 @@ bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 		}
 		if(x+width <= nonConstCS->getX() + nonConstCS->getWidth() && x+width >= nonConstCS->getX() - nonConstCS->getWidth())		// checks the right corner is in the circle
 		{
-			if(y <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))	//upper right corner
+			if(y <= sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))	//upper right corner
 			{
-				if(y >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))
+				if(y >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))
 				{
 					return true;
 				}
 			}
-			else if(y-height <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))//bottom right corner
+			else if(y-height <= sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))//bottom right corner
 			{
-				if(y-height >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))
+				if(y-height >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))
 				{
 					return true;
 				}

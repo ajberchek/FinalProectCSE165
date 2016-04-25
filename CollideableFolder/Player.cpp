@@ -1,10 +1,10 @@
 #include "Player.h"
 
-Player::Player(const Stats & stats)
+Player::Player(const Stats * stat)
 {
-	this->stats = stats;
+	stats = const_cast<Stats *>(stat);
 }
-Player::Player(const Animation & toAdd)
+Player::Player(const Animation * toAdd)
 {
 	pushAnimation(toAdd);
 }
@@ -12,15 +12,26 @@ Player::Player(const Animation & toAdd)
 // Need Avery to explain/implement after all the other Collideable
 // is implemented in this comment
 
-void Player::void onCollision(const Collideable * c)
+void Player::onCollision(const Collideable * c)
 {
-	// Collision Stuff?
+	//Door door;
+	//Wall wall;
+	//Coin coin;
+	//Mole mole;
+	if (typeid(c) == typeid(Door)) {}
+	else if (typeid(c) == typeid(Wall)) {}
+	else if (typeid(c) == typeid(Coin)) {}
+	else if (typeid(c) == typeid(Mole)) {}
+	else 
+	{
+		std::cout<<"Player colliding with player!!! How strange!"<<std::endl;
+	}
 	
 }
 // Need Avery to explain/implement after all the other Collideable
 // is implemented in this comment
 
-void Player::void draw(Animation * toDraw)
+void Player::draw(Animation * toDraw)
 {
 	vector<Animation *> temp = getAnim();
 	for (int i = 0; i < temp.size(); i++)
@@ -34,15 +45,15 @@ void Player::void draw(Animation * toDraw)
 }
 
 // Update the stats private member
-void Player::update(const Stats & stats)
+void Player::update(const Stats * stat)
 {
-	this->stats = stats;
+	stats = const_cast<Stats *>(stat);
 }
 
 // Update the x, y, w, h;
 // Getter for private member stats
 
-Stats& Player::getStats()
+Stats* Player::getStats()
 {
 	return stats;
 }

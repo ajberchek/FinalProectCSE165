@@ -8,7 +8,7 @@ void Wall::onCollision(const Collideable * c)
 {
 	
 }
-void Wall::draw(Animation *)
+void Wall::draw(Animation * toDraw)
 {
 	vector<Animation *> temp = getAnim();
 	for (int i = 0; i < temp.size(); i++)

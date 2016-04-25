@@ -1,15 +1,15 @@
 #include "Mole.h"
 Mole::Mole(long time, bool state)
 {
-	update(time, State);
+	update(time, state);
 }
 
-long Mole::getState()
+bool Mole::getState()
 {
 	return isUp;
 }
 
-bool Mole::getTime()
+long Mole::getTime()
 {
 	return currentStateTime;
 }
@@ -30,7 +30,7 @@ void Mole::update(long Time, bool State)
 	setTime(Time);
 }
 
-void Mole::draw(Animation *)
+void Mole::draw(Animation * toDraw)
 {
 	vector<Animation *> temp = getAnim();
 	for (int i = 0; i < temp.size(); i++)

@@ -1,6 +1,11 @@
 #ifndef COLLISIONSHAPE_H
 #define COLLISIONSHAPE_H
 #include <math.h>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
 class CollisionShape 
 {
 	protected:

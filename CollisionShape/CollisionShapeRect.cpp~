@@ -2,6 +2,7 @@
 #include "typeinfo"
 #include "CollisionShapeRect.h"
 #include "CollisionShapeCircle.h"
+#include <iostream>
 
 CollisionShapeRect::CollisionShapeRect(float _x, float _y, float w, float h)
 {
@@ -13,9 +14,11 @@ CollisionShapeRect::CollisionShapeRect(float _x, float _y, float w, float h)
 
 bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 {
+	std::cout<<"sin"<<std::endl;
 	CollisionShape * nonConstCS = const_cast<CollisionShape *>(cs);
-	if(typeid(nonConstCS) == typeid(CollisionShapeRect))
+	if(typeid(*nonConstCS) == typeid(CollisionShapeRect))
 	{
+		std::cout<<"yesrect"<<std::endl;
 		if(x >= nonConstCS->getX() && x <= nonConstCS->getX() + nonConstCS->getWidth())//checks the rectangle is inside the rectangle
 		{
 			if(y <= nonConstCS->getY() && y >= nonConstCS->getY()-nonConstCS->getHeight())
@@ -69,8 +72,9 @@ bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 		}
 	return false;
 	}
-	else if(typeid(nonConstCS) == typeid(CollisionShapeCircle))
+	else if(typeid(*nonConstCS) == typeid(CollisionShapeCircle))
 	{
+		std::cout<<"norect"<<std::endl;
 		//TODO finish this else if statement
 		//Check if the center of the circle is within the rectanglge
 		if(nonConstCS->getX() >= x && x+width >= nonConstCS->getX())	//checks center of the circle in rectangle
@@ -83,16 +87,16 @@ bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 		//Check if the line of the rectagle intersects with the circle
 		if(nonConstCS->getX() + nonConstCS->getWidth()>= x && nonConstCS->getX()-nonConstCS->getWidth()<= x)// checks the left corner is in the circle
 		{
-			if(y <= sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))		//upper left corner
+			if(y <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x-nonConstCS->getX(), 2.0)))		//upper left corner
 			{
-				if(y >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))
+				if(y >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x-nonConstCS->getX(), 2.0)))
 				{
 					return true;
 				}
 			}
-			else if(y-height <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))//bottom left cor
+			else if(y-height <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x-nonConstCS->getX(), 2.0)))//bottom left cor
 			{
-				if(y-height >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x, 2.0)))
+				if(y-height >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x-nonConstCS->getX(), 2.0)))
 				{
 					return true;
 				}
@@ -101,16 +105,16 @@ bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 		}
 		if(x+width <= nonConstCS->getX() + nonConstCS->getWidth() && x+width >= nonConstCS->getX() - nonConstCS->getWidth())		// checks the right corner is in the circle
 		{
-			if(y <= sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))	//upper right corner
+			if(y <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width-nonConstCS->getX(), 2.0)))	//upper right corner
 			{
-				if(y >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))
+				if(y >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width-nonConstCS->getX(), 2.0)))
 				{
 					return true;
 				}
 			}
-			else if(y-height <= sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))//bottom right corner
+			else if(y-height <= nonConstCS->getY()+sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width-nonConstCS->getX(), 2.0)))//bottom right corner
 			{
-				if(y-height >= -1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width, 2.0)))
+				if(y-height >= nonConstCS->getY()-1.0*sqrt(pow(nonConstCS->getWidth(), 2.0) - pow(x+width-nonConstCS->getX(), 2.0)))
 				{
 					return true;
 				}

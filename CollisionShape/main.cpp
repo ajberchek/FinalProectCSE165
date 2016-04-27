@@ -11,8 +11,11 @@ int main()
 	
 	if(circle.isOverlap(a))
 	{
-		cout<<"jaspal"<<endl;
+		cout << "Overlaps" << endl;
 	}
-	cout<<"singh"<<endl;
+	else
+	{
+		cout << "Doesnt overlap" << endl;
+	}
 return 0;
 }

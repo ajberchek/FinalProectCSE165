@@ -1,6 +1,7 @@
 #include "LevelBuilderAlgorithmText.h"
 #include <iostream>
 #include <fstream>
+#include "../CollisionShape/CollisionShapeRect.h"
 #include "../CollideableFolder/Wall.h"
 #include "../CollideableFolder/Mole.h"
 #include "../CollideableFolder/Coin.h"
@@ -16,7 +17,8 @@ LevelBuilderAlgorithmText::LevelBuilderAlgorithmText(string mazeFile)
 
 void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 {
-	int count = 0;
+	int lineCount = 0;
+	int maxTextWidth = 0;
 
 	cout << "Generating Level with filepath: " << fileForLvl << endl;
 	string line;
@@ -27,11 +29,11 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 		{
 			cout << line << endl;
 			cout << cc->collideableFieldPtr->size() << endl;
-			if(cc->collideableFieldPtr->size() <= count)
+			if(cc->collideableFieldPtr->size() <= lineCount)
 			{
 				cc->collideableFieldPtr->push_back(new vector<Collideable *>);
 			}
-			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(count);
+			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(lineCount);
 			for(int i = 0; i < line.length(); ++i)
 			{
 				if(currentRow->size() <= i)
@@ -53,11 +55,46 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 				else if(line[i] == 'p')
 				{
 					currentRow->at(i) = new Player();
+					cc->mainCharacterPtr = dynamic_cast<Player *>(currentRow->at(i));
+				}
+				else if(line[i] == '#')
+				{
+					currentRow->at(i) = new Wall();
+				}
+				if(i+1 > maxTextWidth)
+				{
+					maxTextWidth = i+1;
+					cout << "New Max Width of data read: " << maxTextWidth << endl;
 				}
 
 			}
-			cc->collideableFieldPtr->at(count) = currentRow;
-			count++;
+			cc->collideableFieldPtr->at(lineCount) = currentRow;
+			lineCount++;
 		}
+
+		//Assign x and y values for the different objects
+		//Keep in mind that the top left of the screen is 0,0 and the bottom right is width,height
+		float widthPerObj = cc->getScreenWidth()/(float)maxTextWidth;
+		float heightPerObj = cc->getScreenHeight()/(float)lineCount;
+		for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
+		{
+			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(lineCount);
+			for(int j = 0; j < currentRow->size(); ++j)
+			{
+				Collideable * toEdit = currentRow->at(j);
+				if(toEdit)
+				{
+					toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+					toEdit->collisionBox = new CollisionShapeRect(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+				}
+			}
+
+		}
+
 	}
 }
+
+
+
+
+

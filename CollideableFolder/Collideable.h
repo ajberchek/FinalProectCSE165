@@ -8,7 +8,7 @@ using namespace std;
 class Collideable
 {
 	float x, y, w, h, maxSpeed;
-	vector<Animation *> anim;
+	vector<Animation *> * anim;
 	public:
 		Collideable();
 		virtual void onCollision(const Collideable & c) = 0;
@@ -19,8 +19,8 @@ class Collideable
 		int getW();
 		int getH();
 		int getSpeed();
-		void pushAnimation(const Animation * toAdd);
-		vector<Animation *> getAnim();
+		void setAnim(vector<Animation *> * toAdd);
+		vector<Animation *> * getAnim();
 		CollisionShape * collisionBox;
 };
 #endif

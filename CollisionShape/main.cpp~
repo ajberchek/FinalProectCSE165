@@ -5,14 +5,14 @@ using namespace std;
 
 int main()
 {
-	CollisionShapeCircle circle(2.0,2.0,2.0);
-	CollisionShapeRect rect(1.0,1.0,2.0,2.0);
-	CollisionShape *a = (CollisionShape *)(&rect);
-	a->update(1.0,1.0,2.0,2.0);
+	CollisionShapeCircle circle(1,1,1);
+	CollisionShapeRect rect(4.0,4.0,1.0,.5);
+	CollisionShape * a = (CollisionShape *)&rect;
 	
 	if(circle.isOverlap(a))
 	{
 		cout<<"jaspal"<<endl;
 	}
+	cout<<"singh"<<endl;
 return 0;
 }

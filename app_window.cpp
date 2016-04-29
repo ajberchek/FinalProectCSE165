@@ -1,6 +1,8 @@
 
 # include <iostream>
 # include "app_window.h"
+# include <vector>
+# include "../GameLogicFolder/GameLogic.h"
 
 AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
           :GlutWindow ( label, x, y, w, h )
@@ -9,6 +11,7 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
+   GameLogic gLogic;
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],
@@ -52,10 +55,14 @@ void AppWindow::handle ( const Event& e )
    const float incy=0.02f;
    if ( e.type==SpecialKey )
     switch ( e.key )
-    { case GLUT_KEY_LEFT:  _markx-=incx; break;
-      case GLUT_KEY_RIGHT: _markx+=incx; break;
-      case GLUT_KEY_UP:    _marky+=incy; break;
-      case GLUT_KEY_DOWN:  _marky-=incy; break;
+    { case GLUT_KEY_LEFT:  _markx-=incx; gLogic->vecEvents.push_back(e.type); break;
+      case GLUT_KEY_RIGHT: _markx+=incx; gLogic->vecEvents.push_back(e.type); break;
+      case GLUT_KEY_UP:    _marky+=incy; gLogic->vecEvents.push_back(e.type); break;
+      case GLUT_KEY_DOWN:  _marky-=incy; gLogic->vecEvents.push_back(e.type); break;
+      /*case (GLUT_KEY_LEFT && GLUT_KEY_UP):    _markx-=incx; _marky+=incy; break;
+      case (GLUT_KEY_LEFT && GLUT_KEY_DOWN):    _markx-=incx; _marky-=incy; break;
+      case (GLUT_KEY_RIGHT && GLUT_KEY_UP):	_markx+=incx; _marky+=incy; break;
+      case (GLUT_KEY_RIGHT && GLUT_KEY_DOWN):	_markx+=incx; _marky-=incy; break;*/
       default: rd=false; // no redraw
 	}
 

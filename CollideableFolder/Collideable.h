@@ -9,7 +9,6 @@ class Collideable
 {
 	float x, y, w, h, maxSpeed;
 	vector<Animation *> anim;
-	CollisionShape * collisionBox;
 	public:
 		Collideable();
 		virtual void onCollision(const Collideable & c) = 0;
@@ -22,5 +21,6 @@ class Collideable
 		int getSpeed();
 		void pushAnimation(const Animation * toAdd);
 		vector<Animation *> getAnim();
+		CollisionShape * collisionBox;
 };
 #endif

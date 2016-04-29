@@ -12,6 +12,8 @@ CollisionShapeCircle::CollisionShapeCircle(float _x, float _y, float r)
 	height = r;
 }
 
+
+
 bool CollisionShapeCircle::isOverlap(const CollisionShape * cs)
 {
 	//std::cout<<"jas"<<std::endl;

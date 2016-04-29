@@ -12,6 +12,7 @@ CollisionShapeRect::CollisionShapeRect(float _x, float _y, float w, float h)
 	height = h;
 }
 
+
 bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
 {
 	//std::cout<<"sin"<<std::endl;

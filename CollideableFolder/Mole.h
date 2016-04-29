@@ -9,8 +9,8 @@ class Mole : public Collideable
 	bool isUp;
 	public:
 		Mole(long = 0, bool = false);
-		void onCollision(const Collideable * c);
-		void draw(Animation *);
+		void onCollision(const Collideable & c);
+		void draw(const Animation & a);
 		void update(long, bool);
 		void pushAnimation(const Animation & toAdd);
 		

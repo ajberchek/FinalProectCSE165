@@ -30,20 +30,13 @@ void Mole::update(long Time, bool State)
 	setTime(Time);
 }
 
-void Mole::draw(Animation * toDraw)
+void Mole::draw(const Animation & toDraw )
 {
-	vector<Animation *> temp = getAnim();
-	for (int i = 0; i < temp.size(); i++)
-	{
-		if (temp.at(i) == toDraw)
-		{
-			temp.at(i)->animate();
-			break;
-		}
-	}
+	Animation * toAnimate = const_cast<Animation *>(&toDraw);
+	toAnimate->animate();
 }
 
-void Mole::onCollision(const Collideable * c)
+void Mole::onCollision(const Collideable & c)
 {
-	
+	return;
 }

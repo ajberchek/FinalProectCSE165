@@ -1,0 +1,2 @@
+Mole$0$Images/Mole/moleHiding.bmp
+Player$0$Images/Player/playerStanding.bmp

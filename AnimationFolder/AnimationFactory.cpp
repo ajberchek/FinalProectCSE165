@@ -19,6 +19,8 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 
 
 	currentPath = cCurrentPath + (string)separator;
+
+	cout << "The path to the config is: " << currentPath + nameOfConfig << endl;
 	
 	string line;
 	ifstream configFile((currentPath + nameOfConfig).c_str());
@@ -61,6 +63,8 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 			}
 			
 			GLuint * toAdd = new GLuint;
+
+			cout << "Grabbing GLuint from: " << arrPair[2] << endl;
 			
 			*toAdd = SOIL_load_OGL_texture
 				(

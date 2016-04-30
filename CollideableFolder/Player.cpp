@@ -57,3 +57,10 @@ Stats* Player::getStats()
 {
 	return stats;
 }
+
+
+void Player::moveRelative(float xRel, float yRel)
+{
+	Collideable::update(Collideable::getX() + SPEED_RELATIVE_TO_SCREEN*xRel, Collideable::getY() + SPEED_RELATIVE_TO_SCREEN*yRel, Collideable::getW(),Collideable::getH());
+	
+}

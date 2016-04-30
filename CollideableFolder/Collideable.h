@@ -11,14 +11,14 @@ class Collideable
 	vector<Animation *> * anim;
 	public:
 		Collideable();
-		virtual void onCollision(const Collideable & c) = 0;
+		virtual bool onCollision(const Collideable & c) = 0;
 		virtual void draw(const Animation  & a) = 0;				//changed from Animation *
 		void update(float x, float y, float w, float h);	//originally by Hang as (float x = x, float y = y, float w = w, float h = h);
-		int getX();
-		int getY();
-		int getW();
-		int getH();
-		int getSpeed();
+		float getX();
+		float getY();
+		float getW();
+		float getH();
+		float getSpeed();
 		void setAnim(vector<Animation *> * toAdd);
 		vector<Animation *> * getAnim();
 		CollisionShape * collisionBox;

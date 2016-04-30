@@ -18,23 +18,23 @@ void Collideable::update(float x, float y, float w, float h)
 	this->h = h;
 }
 
-int Collideable::getX()
+float Collideable::getX()
 {
 	return x;
 }
-int Collideable::getY()
+float Collideable::getY()
 {
 	return y;
 }
-int Collideable::getW()
+float Collideable::getW()
 {
 	return w;
 }
-int Collideable::getH()
+float Collideable::getH()
 {
 	return h;
 }
-int Collideable::getSpeed()
+float Collideable::getSpeed()
 {
 	return maxSpeed;
 }

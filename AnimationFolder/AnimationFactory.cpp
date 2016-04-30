@@ -106,24 +106,3 @@ void AnimationFactory::createAnimation(Collideable * c)
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

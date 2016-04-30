@@ -14,6 +14,7 @@ class CollideableContainer
 		CollideableContainer();
 		float getScreenWidth();
 		float getScreenHeight();
+		void updateScreenSize(float newWidth, float newHeight);
 		
 };
 #endif

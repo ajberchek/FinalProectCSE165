@@ -44,3 +44,15 @@ Animation class will always increment to the next image in a circular manner to 
 Because it is circular, if there is only one texture in that animation vector it will display that same texture next time because of the circular fashion.
 
 
+Animation:
+
+OpenGL allows for various texturing rendering options and allows the programmer to tell the computer how to handle the rendering. 
+Below are some options for texture rendering. Note that these options affects the speed of rendering as well as how well it looks.
+
+glShadeModel:
+	GL_SMOOTH: Pixel Fragments get their own colors. The color is determined through interpolation.
+		- Slower, but look smoother.
+	GL_FLAT:   Pixel Fragments are all assigned to a single color base on their distance to a given vertex. 
+		- Faster, but more rough and edgy.
+glTexCoord2f:
+Think of it as a rectangle of pixels. A square of area of 1 unit from [0,1] to [0,1] is perfectly map for each pixel 1 : 1 in a region of that square. Please don't change unless neccessary.

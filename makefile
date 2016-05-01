@@ -10,7 +10,7 @@ PROGRAM = glutapp
 #######################################################################
 
 # OPTFLAGS = -g  # for debug
-OPTFLAGS = -std=c++11
+OPTFLAGS = -std=c++11 -g
 CC       = g++
 CFLAGS   = -w $(OPTFLAGS)
 

@@ -20,39 +20,51 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 	if(typeid(*nonConstCS) == typeid(CollisionShapeRect))
 	{
 		//std::cout<<"yesrect"<<std::endl;
-		if(x >= nonConstCS->getX() && x <= nonConstCS->getX() + nonConstCS->getWidth())//checks the rectangle is inside the rectangle
+		/*if(x >= nonConstCS->getX() && x <= nonConstCS->getX() + nonConstCS->getWidth())//checks the rectangle is inside the rectangle
 		{
-			if(y <= nonConstCS->getY() && y >= nonConstCS->getY()-nonConstCS->getHeight())
+			cout << "CHECKING A" << endl;
+			if(y >= nonConstCS->getY() && y <= nonConstCS->getY()+nonConstCS->getHeight())
 			{
+				cout<<"1collided"<<endl;
 				return true;
 			}
-		}
-		else if(nonConstCS->getX() >= x && nonConstCS->getX() <= x+width)	//left corner
+		}*/
+		if(nonConstCS->getX() >= x && nonConstCS->getX() <= x+width)	//left corner
 		{
-			if(nonConstCS->getY() <= y && nonConstCS->getY() >= y-height)	//upper left in the rectangle
+			cout << "CHECKING B" << endl;
+			if(nonConstCS->getY() >= y && nonConstCS->getY() <= y+height)	//upper left in the rectangle
 			{
+				cout<<"2collided"<<endl;
 				return true;
 			}
-/*bottom left*/		else if(nonConstCS->getY()-nonConstCS->getHeight() <=y && nonConstCS->getY()-nonConstCS->getHeight()>= y-height)
+/*bottom left*/		else if(nonConstCS->getY()+nonConstCS->getHeight() >=y && nonConstCS->getY()+nonConstCS->getHeight() <= y+height)
 			{
+				cout<<"3collided"<<endl;
 				return true;
 			}
 		}	
 		else if(nonConstCS->getX()+nonConstCS->getWidth() >= x && nonConstCS->getX()+nonConstCS->getWidth() <= x+width)//right corner
 		{
-			if(nonConstCS->getY() <= y && nonConstCS->getY() >= y-height)	//upper right in the rectangle
+			cout << "CHECKING C" << endl;
+			if(nonConstCS->getY() >= y && nonConstCS->getY() <= y+height)	//upper right in the rectangle
 			{
+				cout<<"4collided"<<endl;
 				return true;
 			}
-/*bottom right*/	else if(nonConstCS->getY()-nonConstCS->getHeight() <=y && nonConstCS->getY()-nonConstCS->getHeight()>= y-height)
+/*bottom right*/	else if(nonConstCS->getY()+nonConstCS->getHeight() >=y && nonConstCS->getY()+nonConstCS->getHeight() <= y+height)
 			{
+				printf("x: %f, y: %f, w: %f, h: %f\n", x, y, width, height);
+				printf("player x: %f, y: %f, w: %f, h: %f\n", nonConstCS->getX(), nonConstCS->getY(), nonConstCS->getWidth(), nonConstCS->getHeight());
+				cout<<"5collided"<<endl;
 				return true;
 			}
 		}
-		if(nonConstCS->getX() >= x && nonConstCS->getX() <= x+width)//if its between the x but goes through the rectangle
+		if(nonConstCS->getX() >= x && nonConstCS->getX()+ nonConstCS->getWidth() <= x+width)//if its between the x but goes through the rectangle
 		{
-			if(nonConstCS->getY() >= y && nonConstCS->getY()- nonConstCS->getHeight() <= y-height)
+			cout << "CHECKING D" << endl;
+			if(nonConstCS->getY() <= y && nonConstCS->getY()+ nonConstCS->getHeight() >= y+height)
 			{
+				cout<<"6collided"<<endl;
 				return true;
 			}
 			/*else if(nonConstCS->getY() >= y && nonConstCS->getY()- nonConstCS->getHeight() >= y-height)//vertical rectangle
@@ -60,16 +72,19 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 				return true;
 			}*/
 		}
-		else if(nonConstCS->getY() <= y && nonConstCS->getY() >= y-height)//same as last one but y is between the rectangle like horizontal
+		else if(nonConstCS->getY() >= y && nonConstCS->getY()+ nonConstCS->getHeight() <= y+height)//same as last one but y is between the rectangle like horizontal
 		{
-			if(nonConstCS->getX() <= x && nonConstCS->getX() >= x+width)
+			cout << "CHECKING E" << endl;
+			if(nonConstCS->getX() <= x && nonConstCS->getX() + nonConstCS->getWidth() >= x+width)
 			{
+				cout<<"7collided"<<endl;
 				return true;
 			}
-			else if(nonConstCS->getX() <= x && nonConstCS->getX() <= x+width)
+			/*else if(nonConstCS->getX() <= x && nonConstCS->getX()+ nonConstCS->getWidth() <= x+width)
 			{
+				cout<<"8collided"<<endl;
 				return true;
-			}
+			}*/
 		}
 	return false;
 	}

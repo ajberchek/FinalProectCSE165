@@ -111,18 +111,20 @@ void GameLogic::update()
 			{
 				if(ourPlayer->onCollision(collideableToCheck))	
 				{
+					cout << typeid(*collideableToCheck).name() << endl;
+				
 					actuallyCollided = true;
 				}
 			}
 		}
 	}
 
-/*
+
 	if(actuallyCollided)
 	{
 		ourPlayer->Collideable::update(currentX, currentY, currentW, currentH);
 	}
-	*/
+	
 
 	
 	for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)

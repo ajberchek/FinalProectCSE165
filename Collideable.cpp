@@ -20,6 +20,10 @@ void Collideable::update(float x, float y, float w, float h)
 	this->y = y;
 	this->w = w;
 	this->h = h;
+	if(collisionBox)
+	{
+		collisionBox->update(x,y,w,h);
+	}
 	cout << "update to: x,y,w,h: " << x << ", " << y << ", " << w << ", " << h << endl;
 
 }

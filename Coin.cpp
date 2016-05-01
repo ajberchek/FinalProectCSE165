@@ -18,6 +18,6 @@ void Coin::setCoinValue(int toChange)
 bool Coin::onCollision(Collideable * c)
 {
 	// Collision Stuff
-	return true;
+	return c->collisionBox->isOverlap(collisionBox);
 	
 }

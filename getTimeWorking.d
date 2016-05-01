@@ -1,1 +1,0 @@
-getTimeWorking.o: getTimeWorking.cpp

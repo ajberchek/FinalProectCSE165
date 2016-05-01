@@ -84,8 +84,9 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 				Collideable * toEdit = currentRow->at(j);
 				if(toEdit)
 				{
-					toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
 					toEdit->collisionBox = new CollisionShapeRect(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+					toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+					
 				}
 			}
 

@@ -3,8 +3,10 @@
 #include "LevelBuilderAlgorithm.h"
 #include <iostream>
 #include <string>
+#include "commonVariable.h"
 
 using namespace std;
+
 
 class LevelBuilderAlgorithmText : public LevelBuilderAlgorithm
 {
@@ -13,6 +15,6 @@ class LevelBuilderAlgorithmText : public LevelBuilderAlgorithm
 	public:
 		LevelBuilderAlgorithmText(string lvlFile);
 		void genLvl(CollideableContainer * cc);
-};
+	};
 
 #endif

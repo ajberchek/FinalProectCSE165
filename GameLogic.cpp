@@ -20,6 +20,18 @@ CollideableContainer * GameLogic::loadLevel(string levelFileName, AnimationFacto
 	LevelBuilderAlgorithmText * lvlBuild = new LevelBuilderAlgorithmText(levelFileName);
 	lvlBuild->LevelBuilderAlgorithmText::genLvl(toRet);
 
+	for(int i = 0; i < toRet->collideableFieldPtr->size(); ++i)
+	{
+		vector<Collideable *> * thisRow = toRet->collideableFieldPtr->at(i);
+		for(int j = 0; j < thisRow->size(); ++j)
+		{
+			if(thisRow->at(j))
+			{
+				animFact->createAnimation(thisRow->at(j));
+			}
+		}
+	}
+
 
 
 	delete lvlBuild;

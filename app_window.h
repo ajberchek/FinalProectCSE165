@@ -7,6 +7,8 @@
 //# include "Animation.h"
 # include "SOIL.h"
 
+
+
 // The functionality of your application should be implemented inside AppWindow
 class AppWindow : public GlutWindow
  { private :
@@ -17,7 +19,7 @@ class AppWindow : public GlutWindow
    public :
     AppWindow ( const char* label, int x, int y, int w, int h );
     void windowToScene ( float& x, float &y );
-
+    
    private : // functions derived from the base class
     virtual void handle ( const Event& e );
     virtual void draw ();

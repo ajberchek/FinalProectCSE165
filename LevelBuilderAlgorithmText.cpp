@@ -74,8 +74,8 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 
 		//Assign x and y values for the different objects
 		//Keep in mind that the top left of the screen is 0,0 and the bottom right is width,height
-		float widthPerObj = cc->getScreenWidth()/(float)maxTextWidth;
-		float heightPerObj = cc->getScreenHeight()/(float)lineCount;
+		float widthPerObj = newW/(float)maxTextWidth;
+		float heightPerObj = newH/(float)lineCount;
 		for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
 		{
 			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(i);

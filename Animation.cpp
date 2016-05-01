@@ -1,4 +1,9 @@
 #include "Animation.h"
+#include <iostream>
+
+using namespace std;
+
+
 
 Animation::Animation()
 {
@@ -8,6 +13,9 @@ Animation::Animation()
 
 void Animation::animate(float &x, float &y, float &w, float &h) 	 // Why not take in a Collideable container instead
 {	
+
+	cout << "animate is called" << endl;
+
 	// Binding Texture
 	glEnable(GL_TEXTURE_2D);
 	glShadeModel(GL_SMOOTH);

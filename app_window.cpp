@@ -4,6 +4,12 @@
 # include <vector>
 # include "GameLogic.h"
 
+
+float newH;
+float newW;
+bool resizeCalledAlready = false;
+
+
 GameLogic * gLogic;
 
 Animation *testAnim;
@@ -15,7 +21,6 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
-   gLogic = new GameLogic(); 
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],
@@ -89,8 +94,16 @@ void AppWindow::handle ( const Event& e )
 void AppWindow::resize ( int w, int h )
  {
    // Define that OpenGL should use the whole window for rendering
+   cout << "resize called: " << endl;
    glViewport( 0, 0, w, h );
    _w=w; _h=h;
+   newW = w;
+   newH = h;
+   if(!resizeCalledAlready)
+   {
+	   gLogic = new GameLogic(); 
+	   resizeCalledAlready = true;
+   }
  }
 
 // here we will redraw the scene according to the current state of the application.
@@ -170,6 +183,10 @@ void AppWindow::draw ()
    glEnd();*/
 
    // Swap buffers
+   //
+   
+   gLogic->update();
+   
    glFlush();         // flush the pipeline (usually not necessary)
    glutSwapBuffers(); // we were drawing to the back buffer, now bring it to the front
 }

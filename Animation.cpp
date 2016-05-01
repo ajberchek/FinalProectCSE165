@@ -6,13 +6,14 @@ Animation::Animation()
 	it = imgPtr->begin();
 }
 
-void Animation::animate(float &x, float &y, float &w, float &h) 	 // Why not take in a Collideable container instead
+void Animation::animate(float x, float y, float w, float h) 	 // Why not take in a Collideable container instead
 {	
 	// Binding Texture
 	glEnable(GL_TEXTURE_2D);
 	glShadeModel(GL_SMOOTH);
 	glBindTexture(GL_TEXTURE_2D, *(imgPtr->at((it-imgPtr->begin()))));
-
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	
 	// Drawing the Texture

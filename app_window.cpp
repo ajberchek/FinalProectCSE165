@@ -6,6 +6,8 @@
 
 GameLogic * gLogic;
 
+Animation *testAnim;
+
 AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
           :GlutWindow ( label, x, y, w, h )
  {
@@ -13,7 +15,7 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
-   gLogic = new GameLogic(); 
+   //gLogic = new GameLogic(); 
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],
@@ -122,6 +124,7 @@ void AppWindow::draw ()
    glVertex2d (-0.5, 0.5 );
    glEnd();
 
+   /*
    // Draw three overlapping triangles
    glBegin( GL_TRIANGLES ); // you may use GL_POLYGON for generic *convex* polygons
    glColor3f ( 1.0, 0.0, 0.0 ); // red
@@ -139,7 +142,62 @@ void AppWindow::draw ()
    glVertex3d ( -0.8, -0.4, -0.1 );
    glVertex3d ( -0.8, -0.1, -0.1 );
    glEnd();
+   */
 
+   GLuint texture = SOIL_load_OGL_texture
+	   (
+		   "moleHoleWithoutMole.bmp",
+		   SOIL_LOAD_AUTO,
+		   SOIL_CREATE_NEW_ID,
+		   SOIL_FLAG_INVERT_Y
+		   );
+   float x = 0.0f;
+   float y = 0.0f;
+   float w = 1.0f;
+   float h = 1.0f;
+   glEnable(GL_TEXTURE_2D);
+   glShadeModel(GL_SMOOTH);
+   glBindTexture(GL_TEXTURE_2D, texture);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+   glBegin(GL_POLYGON);											
+   glTexCoord2f(0.0f, 1.0f);	glVertex2d(x, y + h);
+   glTexCoord2f(1.0f, 1.0f);	glVertex2d(x + w, y + h);
+   glTexCoord2f(1.0f, 0.0f);	glVertex2d(x + w, y);
+   glTexCoord2f(0.0f, 0.0f);	glVertex2d(x, y);
+   glEnd();
+   /*
+   glEnable(GL_TEXTURE_2D);
+	glShadeModel(GL_SMOOTH);
+	glBindTexture(GL_TEXTURE_2D, *(imgPtr->at((it-imgPtr->begin()))));
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	
+	// Drawing the Texture
+	glBegin(GL_POLYGON);											// texCoord for tex, vertex for where to map
+																	// texCoord is set to non-stretching, 1 to 1 mapping.
+	glTexCoord2f(0.0f, 1.0f);	glVertex2d(x, y+h);
+	glTexCoord2f(1.0f, 1.0f);	glVertex2d(x+w, y+h);
+	glTexCoord2f(1.0f, 0.0f);	glVertex2d(x+w, y);
+	glTexCoord2f(0.0f, 0.0f);	glVertex2d(x, y);
+	glEnd();
+	
+
+	it = imgPtr->begin() + ((it-imgPtr->begin()+1) % imgPtr->size());
+
+
+	glDisable(GL_TEXTURE_2D);
+   */
+   /*
+   vector<GLuint *> * test = testAnim->imgPtr;
+   test->push_back(&texture);
+   float x = 0.0f;
+   float y = 0.0f;
+   float w = 1.0f;
+   float h = 1.0f;
+   testAnim->animate(x, y, w, h);
+   */
    /* you may use GL_POLYGON for generic *convex* polygons, like this:
    glBegin( GL_POLYGON );
    glColor3f ( ... );

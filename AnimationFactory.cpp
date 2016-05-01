@@ -28,7 +28,8 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 	if(configFile.is_open())
 	{
 		while(getline(configFile,line))
-		{
+		{//
+			cout << line << endl;
 			int wordCount = 0;
 			int charCount = 0;
 			string arrPair[3];

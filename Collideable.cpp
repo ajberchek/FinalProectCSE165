@@ -8,6 +8,10 @@ Collideable::Collideable()
 	h = 0;
 	maxSpeed = 0;
 }
+Collideable::~Collideable()
+{
+	delete this;
+}
 // Update Function for x,w,h,w. Note that it is default argumented into 
 // x = x, y = y, w = w, h = h;
 void Collideable::update(float x, float y, float w, float h)

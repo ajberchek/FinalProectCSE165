@@ -4,6 +4,8 @@
 #define APP_WINDOW_H
 
 # include "glut_window.h"
+//# include "Animation.h"
+# include <SOIL.h>
 
 // The functionality of your application should be implemented inside AppWindow
 class AppWindow : public GlutWindow

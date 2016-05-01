@@ -1,6 +1,7 @@
 #ifndef ANIMATIONFACTORY_H
 #define ANIMATIONFACTORY_H
 #include <stdio.h>  /* defines FILENAME_MAX */
+/*
 #ifdef WINDOWS
 	#define separator "\\\\"
     #include <direct.h>
@@ -10,6 +11,7 @@
     #include <unistd.h>
     #define GetCurrentDir getcwd
  #endif
+ */
 #include <typeinfo>
 #include <map>
 #include <vector>

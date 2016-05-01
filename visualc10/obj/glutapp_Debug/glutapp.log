@@ -1,0 +1,10 @@
+﻿  app_main.cpp
+  app_window.cpp
+c:\users\vihn\documents\school\spring 2016\oop\finalproectcse165\collisionshape.h(24): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\vihn\documents\school\spring 2016\oop\finalproectcse165\collisionshape.h(28): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\vihn\documents\school\spring 2016\oop\finalproectcse165\collisionshape.h(32): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+c:\users\vihn\documents\school\spring 2016\oop\finalproectcse165\collisionshape.h(36): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+app_main.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+app_window.obj : error LNK2019: unresolved external symbol _SOIL_load_OGL_texture referenced in function "private: virtual void __thiscall AppWindow::draw(void)" (?draw@AppWindow@@EAEXXZ)
+obj\glutapp_Debug\glutapp.exe : fatal error LNK1120: 1 unresolved externals

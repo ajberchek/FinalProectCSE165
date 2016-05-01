@@ -78,7 +78,7 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 		float heightPerObj = cc->getScreenHeight()/(float)lineCount;
 		for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
 		{
-			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(lineCount);
+			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(i);
 			for(int j = 0; j < currentRow->size(); ++j)
 			{
 				Collideable * toEdit = currentRow->at(j);

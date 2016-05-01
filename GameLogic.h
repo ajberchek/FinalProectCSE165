@@ -19,7 +19,7 @@ class GameLogic
 		queue<GlutWindow::Event> eventQueue;
 		void update();
 		unsigned long long updateTime();
-		CollideableContainer * loadLevel(string levelFile);
+		CollideableContainer * loadLevel(string levelFile, AnimationFactory * animFact);
 
 
 };

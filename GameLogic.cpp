@@ -9,19 +9,25 @@
 GameLogic::GameLogic()
 {
 	animFactory = new AnimationFactory(CONFIG_FILENAME);
-	cc = loadLevel(LEVEL_FILENAME);
+	cc = loadLevel(LEVEL_FILENAME, animFactory);
 	lastTime = updateTime();
 	eventQueue = queue<GlutWindow::Event>();
 }
 
-CollideableContainer * GameLogic::loadLevel(string levelFileName)
+CollideableContainer * GameLogic::loadLevel(string levelFileName, AnimationFactory * animFact)
 {
 	CollideableContainer * toRet = new CollideableContainer();
 	LevelBuilderAlgorithmText * lvlBuild = new LevelBuilderAlgorithmText(levelFileName);
 	lvlBuild->LevelBuilderAlgorithmText::genLvl(toRet);
+
+
+
 	delete lvlBuild;
 	return toRet;
 }
+
+
+
 
 void GameLogic::update()
 {

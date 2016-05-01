@@ -1,5 +1,7 @@
 #include "GameLogic.h"
 #include <chrono>
+#include <iostream>
+#include <string>
 
 #define	CONFIG_FILENAME	"config.txt"
 #define LEVEL_FILENAME	"level.txt"
@@ -12,11 +14,11 @@ GameLogic::GameLogic()
 	eventQueue = queue<GlutWindow::Event>();
 }
 
-CollideableContainer * loadLevel(string levelFileName)
+CollideableContainer * GameLogic::loadLevel(string levelFileName)
 {
 	CollideableContainer * toRet = new CollideableContainer();
 	LevelBuilderAlgorithmText * lvlBuild = new LevelBuilderAlgorithmText(levelFileName);
-	lvlBuild->LevelBuilderAlgorithm::genLvl(toRet);
+	lvlBuild->LevelBuilderAlgorithmText::genLvl(toRet);
 	delete lvlBuild;
 	return toRet;
 }

@@ -56,7 +56,7 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 					toCopy += line[charCount++];
 				}
 			}
-			arrPair[3] = toCopy;
+			arrPair[2] = toCopy;
 
 			if(!imgMap.count(arrPair[0]))
 			{

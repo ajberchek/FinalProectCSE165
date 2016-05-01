@@ -8,7 +8,8 @@ class Animation
 	public:
 		Animation();
 		vector<GLuint *> * imgPtr;
-		vector<GLuint *>::iterator it;
-		void animate(float &x, float &y, float &w, float &h);
+		int it;
+		void animate(float x, float y, float w, float h);
+		void windowToScene(float &x, float &y);
 };
 #endif 

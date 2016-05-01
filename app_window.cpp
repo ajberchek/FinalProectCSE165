@@ -116,31 +116,7 @@ void AppWindow::draw ()
    glMatrixMode( GL_MODELVIEW );
    glLoadIdentity();
 
-   // Set drawing color to yellow
-   glColor3d ( 1.0, 0.9, 0.3 );		
-
-      GLuint texture = SOIL_load_OGL_texture
-	   (
-		   "moleHoleWithoutMole.bmp",
-		   SOIL_LOAD_AUTO,
-		   SOIL_CREATE_NEW_ID,
-		   SOIL_FLAG_INVERT_Y
-		   );
-   float x = 0.0f;
-   float y = 0.0f;
-   float w = 1.0f;
-   float h = 1.0f;
-   glEnable(GL_TEXTURE_2D);
-   glShadeModel(GL_SMOOTH);
-   glBindTexture(GL_TEXTURE_2D, texture);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-   glBegin(GL_POLYGON);											
-   glTexCoord2f(0.0f, 1.0f);	glVertex2d(x, y + h);
-   glTexCoord2f(1.0f, 1.0f);	glVertex2d(x + w, y + h);
-   glTexCoord2f(1.0f, 0.0f);	glVertex2d(x + w, y);
-   glTexCoord2f(0.0f, 0.0f);	glVertex2d(x, y);
-   glEnd();
+   
    /*
    glEnable(GL_TEXTURE_2D);
 	glShadeModel(GL_SMOOTH);

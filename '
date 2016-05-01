@@ -1,6 +1,5 @@
 #include "Animation.h"
 #include <iostream>
-#include "commonVariable.h"
 
 using namespace std;
 
@@ -9,35 +8,20 @@ using namespace std;
 Animation::Animation()
 {
 	imgPtr = new vector<GLuint *>();
-	it = 0;
+	it = imgPtr->begin();
 }
 
-void Animation::windowToScene(float &x, float &y)
-{
-	x = (2.0f*(x/float(newW)) - 1.0f);
-	y = 1.0f - (2.0f*(y/float(newH)));
-}
-
-void Animation::animate(float x, float y, float w, float h) 	 // Why not take in a Collideable container instead
+void Animation::animate(float &x, float &y, float &w, float &h) 	 // Why not take in a Collideable container instead
 {	
 
-
-	Animation::windowToScene(x,y);
-
-	cout << "NewW: " << newW << " NewH: " << newH << endl;
-
-	w = 2.0f*((w/float(newW)));
-	h = ((h/float(newH)));
-
-	
-
 	cout << "animate is called" << endl;
-	cout << "Drawing on coordinates (x,y,w,h): " << x << ", " << y << ", " << w << ", " << h << endl;
+	cout << "it: " << it << " begin(): " << imgPtr->begin() << endl;
+	cout << "Trying to access gluint at: " << it-imgPtr->begin() << endl;
 
 	// Binding Texture
 	glEnable(GL_TEXTURE_2D);
 	glShadeModel(GL_SMOOTH);
-	glBindTexture(GL_TEXTURE_2D, *(imgPtr->at((it))));
+	glBindTexture(GL_TEXTURE_2D, *(imgPtr->at((it-imgPtr->begin()))));
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -48,11 +32,11 @@ void Animation::animate(float x, float y, float w, float h) 	 // Why not take in
 	glTexCoord2f(0.0f, 1.0f);	glVertex2d(x, y);
 	glTexCoord2f(1.0f, 1.0f);	glVertex2d(x+w, y);
 	glTexCoord2f(1.0f, 0.0f);	glVertex2d(x+w, y-h);
-	glTexCoord2f(0.0f, 0.0f);	glVertex2d(x, y-h);
+	glTexCoord2f(0.0f, 0.0f);	glVertex2d(x-w, y-h);
 	glEnd();
 	
 
-	it = ((it+1) % imgPtr->size());
+	it = imgPtr->begin() + ((it-imgPtr->begin()+1) % imgPtr->size());
 
 
 	glDisable(GL_TEXTURE_2D);

@@ -1,1 +1,1 @@
-Animation.o: Animation.cpp Animation.h
+Animation.o: Animation.cpp Animation.h commonVariable.h

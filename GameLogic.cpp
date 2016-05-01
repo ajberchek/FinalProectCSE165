@@ -60,11 +60,14 @@ void GameLogic::update()
 
 	lastTime = currentTime;
 
+	float yMover = 0.0f;
+	float xMover = 0.0f;
+
+	if(eventQueue.size() > 0)
+	{
 	GlutWindow::Event currentEvent = eventQueue.front();
 	eventQueue.pop();
 
-	float xMover = 0.0f;
-	float yMover = 0.0f;
 
 	if(currentEvent.type == GlutWindow::SpecialKey)
 	{
@@ -86,7 +89,9 @@ void GameLogic::update()
 	}
 
 
+
 	ourPlayer->moveRelative(xMover*timeDiff,yMover*timeDiff);
+	}
 
 
 	for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
@@ -120,14 +125,15 @@ void GameLogic::update()
 			Collideable * collideableToCheck = thisRowOfCollideables->at(j);
 			if(collideableToCheck)
 			{
-				if(typeid(*collideableToCheck) == typeid(Player))
-				{
-					collideableToCheck->draw(*collideableToCheck->getAnim()->at(0));
-				}
-				else if(typeid(*collideableToCheck) == typeid(Mole))
+				
+				if(typeid(*collideableToCheck) == typeid(Mole))
 				{
 					//If it is up it draws the mole as up if it is down then it is down
 					collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
+				}
+				else
+				{
+					collideableToCheck->draw(*collideableToCheck->getAnim()->at(0));
 				}
 			}
 			

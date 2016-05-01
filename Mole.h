@@ -9,7 +9,7 @@ class Mole : public Collideable
 	bool isUp;
 	public:
 		Mole(long = 0, bool = false);
-		bool onCollision(const Collideable & c);
+		bool onCollision(Collideable * c);
 		void update(long, bool);
 		void pushAnimation(const Animation & toAdd);
 		

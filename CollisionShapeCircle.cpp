@@ -14,10 +14,10 @@ CollisionShapeCircle::CollisionShapeCircle(float _x, float _y, float r)
 
 
 
-bool CollisionShapeCircle::isOverlap(const CollisionShape * cs)
+bool CollisionShapeCircle::isOverlap(CollisionShape * cs)
 {
 	//std::cout<<"jas"<<std::endl;
-	CollisionShape * nonConstCS = const_cast<CollisionShape *>(cs);
+	CollisionShape * nonConstCS = cs; 
 	if(typeid(*nonConstCS) == typeid(CollisionShapeCircle))
 	{
 		//std::cout<<"yes"<<std::endl;

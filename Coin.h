@@ -9,7 +9,7 @@ class Coin : public Collideable
 	int coinValue;
 	public:
 		Coin();
-		bool onCollision(const Collideable & c);
+		bool onCollision(Collideable * c);
 		int getCoinValue();
 		void setCoinValue(int val);
 };

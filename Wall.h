@@ -7,8 +7,7 @@ class Wall : public Collideable
 {
 	public:
 		Wall();
-		void onCollision(const Collideable * c);
-		void draw(Animation *);
+		bool onCollision(Collideable * c);
 };
 
 #endif 

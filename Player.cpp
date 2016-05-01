@@ -4,28 +4,34 @@ Player::Player(const Stats * stat)
 {
 	stats = const_cast<Stats *>(stat);
 }
-Player::Player(const Animation * toAdd)
+Player::Player()
 {
-	pushAnimation(toAdd);
+
 }
 
 // Need Avery to explain/implement after all the other Collideable
 // is implemented in this comment
 
-bool Player::onCollision(const Collideable * c)
+bool Player::onCollision(Collideable * c)
 {
 	//Door door;
 	//Wall wall;
 	//Coin coin;
 	//Mole mole;
-	if (typeid(c) == typeid(Door)) {}
-	else if (typeid(c) == typeid(Wall)) {}
-	else if (typeid(c) == typeid(Coin)) {}
-	else if (typeid(c) == typeid(Mole)) {}
-	else 
+	if(c->collisionBox->isOverlap(collisionBox))
 	{
-		std::cout<<"Player colliding with player!!! How strange!"<<std::endl;
+		
+		if (typeid(*c) == typeid(Door)) {}
+		else if (typeid(*c) == typeid(Wall)) {}
+		else if (typeid(*c) == typeid(Coin)) {}
+		else if (typeid(*c) == typeid(Mole)) {}
+		else 
+		{
+			std::cout<<"Player colliding with player!!! How strange!"<<std::endl;
+		}
+		return true;
 	}
+	return false;
 	
 }
 // Need Avery to explain/implement after all the other Collideable

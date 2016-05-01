@@ -11,7 +11,7 @@ class CollisionShapeCircle : CollisionShape
 		//This function is used to determine if two objects overlap
 		//@param const CollisionShape * cs This is the collision shape of the Collideable to check if collision occurred
 		//@return true if they overlap, false if they don't
-		bool isOverlap(const CollisionShape * cs);
+		bool isOverlap(CollisionShape * cs);
 
 
 

@@ -15,8 +15,9 @@ void Coin::setCoinValue(int toChange)
 	coinValue = toChange;
 }
 
-bool Coin::onCollision(const Collideable & c)
+bool Coin::onCollision(Collideable * c)
 {
 	// Collision Stuff
+	return true;
 	
 }

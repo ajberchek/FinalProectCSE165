@@ -11,8 +11,9 @@ class Collideable
 	vector<Animation *> * anim;
 	public:
 		Collideable();
-		virtual bool onCollision(const Collideable & c) = 0;
-		virtual void draw(const Animation  & a)
+		virtual ~Collideable();
+		virtual bool onCollision(Collideable * c) = 0;
+		virtual void draw(Animation  & a)
 		{
 			a.animate(x,y,w,h);
 		}

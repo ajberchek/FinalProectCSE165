@@ -13,10 +13,10 @@ CollisionShapeRect::CollisionShapeRect(float _x, float _y, float w, float h)
 }
 
 
-bool CollisionShapeRect::isOverlap(const CollisionShape * cs)
+bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 {
 	//std::cout<<"sin"<<std::endl;
-	CollisionShape * nonConstCS = const_cast<CollisionShape *>(cs);
+	CollisionShape * nonConstCS = cs; 
 	if(typeid(*nonConstCS) == typeid(CollisionShapeRect))
 	{
 		//std::cout<<"yesrect"<<std::endl;

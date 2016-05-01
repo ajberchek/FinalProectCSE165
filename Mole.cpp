@@ -30,7 +30,7 @@ void Mole::update(long Time, bool State)
 	setTime(Time);
 }
 
-void Mole::onCollision(const Collideable & c)
+bool Mole::onCollision(Collideable * c)
 {
-	return;
+	return collisionBox->isOverlap(c->collisionBox) && isUp;
 }

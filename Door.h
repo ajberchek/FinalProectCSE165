@@ -8,7 +8,7 @@ class Door : public Collideable
 	bool isOpen;
 	public:
 		Door(bool = false);
-		bool onCollision(const Collideable & c);
+		bool onCollision(Collideable * c);
 		bool getState();
 		void setState(bool);
 };

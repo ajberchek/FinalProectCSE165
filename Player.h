@@ -19,8 +19,8 @@ class Player : public Collideable
 	Stats* stats;
 	public:
 		Player(const Stats * stats);
-		Player(const Animation * toAdd);
-		bool onCollision(const Collideable & c);
+		Player();
+		bool onCollision(Collideable * c);
 	
 		void update(const Stats * stats);
 		Stats* getStats();

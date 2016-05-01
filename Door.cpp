@@ -4,9 +4,9 @@ Door::Door(bool state)
 	setState(state);
 }
 
-bool Door::onCollision(const Collideable & c)
+bool Door::onCollision(Collideable * c)
 {
-	
+	return true;	
 }
 
 bool Door::getState()

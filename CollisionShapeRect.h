@@ -7,6 +7,6 @@ class CollisionShapeRect : public CollisionShape
 	//width and height correspond to the width and height of the rectangle
 	public:
 		CollisionShapeRect(float _x, float _y, float w, float h);
-		bool isOverlap(const CollisionShape * cs);
+		bool isOverlap(CollisionShape * cs);
 };
 #endif

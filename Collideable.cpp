@@ -20,7 +20,7 @@ void Collideable::update(float x, float y, float w, float h)
 	this->y = y;
 	this->w = w;
 	this->h = h;
-	cout << "update: x,y,w,h: " << x << ", " << y << ", " << w << ", " << h << endl;
+	cout << "update to: x,y,w,h: " << x << ", " << y << ", " << w << ", " << h << endl;
 
 }
 

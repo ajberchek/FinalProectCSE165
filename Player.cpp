@@ -54,6 +54,10 @@ Stats* Player::getStats()
 
 void Player::moveRelative(float xRel, float yRel)
 {
+	cout << endl;
+	cout << "Attempting move to" << endl;
 	Collideable::update(Collideable::getX() + SPEED_RELATIVE_TO_SCREEN*xRel, Collideable::getY() + SPEED_RELATIVE_TO_SCREEN*yRel, Collideable::getW(),Collideable::getH());
+	cout << "Moved" << endl;
+	cout << endl;
 	
 }

@@ -24,15 +24,15 @@ void Animation::animate(float x, float y, float w, float h) 	 // Why not take in
 
 	Animation::windowToScene(x,y);
 
-	cout << "NewW: " << newW << " NewH: " << newH << endl;
+	//cout << "NewW: " << newW << " NewH: " << newH << endl;
 
 	w = 2.0f*((w/float(newW)));
-	h = ((h/float(newH)));
+	h = 2.0f*((h/float(newH)));
 
 	
 
-	cout << "animate is called" << endl;
-	cout << "Drawing on coordinates (x,y,w,h): " << x << ", " << y << ", " << w << ", " << h << endl;
+	//cout << "animate is called" << endl;
+	//cout << "Drawing on coordinates (x,y,w,h): " << x << ", " << y << ", " << w << ", " << h << endl;
 
 	// Binding Texture
 	glEnable(GL_TEXTURE_2D);

@@ -2,6 +2,7 @@
 #include <chrono>
 #include <iostream>
 #include <string>
+#include "commonVariable.h"
 
 #define	CONFIG_FILENAME	"config.txt"
 #define LEVEL_FILENAME	"level.txt"
@@ -71,26 +72,32 @@ void GameLogic::update()
 
 	if(currentEvent.type == GlutWindow::SpecialKey)
 	{
+		cout << "***Went into key check***" << endl;
 		switch(currentEvent.key)
 		{
 			case GLUT_KEY_LEFT:
-				xMover = cc->getScreenWidth() * -1;
+				//xMover = newW * -1;
+				xMover = -20;
 				break;
 			case GLUT_KEY_RIGHT:
-				xMover = cc->getScreenWidth();
+				//xMover = newW;
+				xMover = 20;
 				break;
 			case GLUT_KEY_UP:
-				yMover = cc->getScreenHeight();
+				//yMover = newH;
+				yMover = -20;
 				break;
 			case GLUT_KEY_DOWN:
-				yMover = cc->getScreenHeight() * -1;
+				//yMover = newH*-1;
+				yMover = 20;
 				break;
 		}
 	}
 
+	//ourPlayer->moveRelative(xMover*timeDiff,yMover*timeDiff);
+	ourPlayer->moveRelative(xMover,yMover);
 
 
-	ourPlayer->moveRelative(xMover*timeDiff,yMover*timeDiff);
 	}
 
 
@@ -110,11 +117,12 @@ void GameLogic::update()
 		}
 	}
 
-
+/*
 	if(actuallyCollided)
 	{
 		ourPlayer->Collideable::update(currentX, currentY, currentW, currentH);
 	}
+	*/
 
 	
 	for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)

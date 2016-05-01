@@ -32,7 +32,7 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 		{
 			int wordCount = 0;
 			int charCount = 0;
-			string arrPair[2];
+			string arrPair[3];
 			string toCopy = "";
 			
 			while(charCount < line.length())
@@ -56,7 +56,7 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 					toCopy += line[charCount++];
 				}
 			}
-			arrPair[2] = toCopy;
+			arrPair[3] = toCopy;
 
 			if(!imgMap.count(arrPair[0]))
 			{

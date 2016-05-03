@@ -6,7 +6,7 @@ Door::Door(bool state)
 
 bool Door::onCollision(Collideable * c)
 {
-	return collisionBox->isOverlap(collisionBox);
+	return c->collisionBox->isOverlap(collisionBox);
 }
 
 bool Door::getState()

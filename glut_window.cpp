@@ -25,6 +25,7 @@ GlutWindow::GlutWindow ( const char* label, int x, int y, int w, int h )
    glutInitWindowPosition ( x, y );
    glutInitWindowSize ( w, h );
    glutCreateWindow ( label );
+   //glutFullScreen();
 
    // Initialize OpenGL settings as we want
    glEnable ( GL_DEPTH_TEST );

@@ -42,7 +42,7 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 				}
 				if(line[i] == 'm')
 				{
-					currentRow->at(i) = new Mole();
+					currentRow->at(i) = new Mole(0,true);
 				}
 				else if(line[i] == 'c')
 				{
@@ -85,7 +85,14 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 				if(toEdit)
 				{
 					toEdit->collisionBox = new CollisionShapeRect(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
-					toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+					if(toEdit == cc->mainCharacterPtr)
+					{
+						toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj*0.9,heightPerObj*0.9);
+					}
+					else
+					{
+						toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+					}
 					
 				}
 			}

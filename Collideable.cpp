@@ -10,7 +10,7 @@ Collideable::Collideable()
 }
 Collideable::~Collideable()
 {
-	delete this;
+	delete collisionBox;
 }
 // Update Function for x,w,h,w. Note that it is default argumented into 
 // x = x, y = y, w = w, h = h;

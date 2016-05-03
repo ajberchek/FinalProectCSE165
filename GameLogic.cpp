@@ -77,19 +77,19 @@ void GameLogic::update()
 		{
 			case GLUT_KEY_LEFT:
 				//xMover = newW * -1;
-				xMover = -200;
+				xMover = -20;
 				break;
 			case GLUT_KEY_RIGHT:
 				//xMover = newW;
-				xMover = 200;
+				xMover = 20;
 				break;
 			case GLUT_KEY_UP:
 				//yMover = newH;
-				yMover = -200;
+				yMover = -20;
 				break;
 			case GLUT_KEY_DOWN:
 				//yMover = newH*-1;
-				yMover = 200;
+				yMover = 20;
 				break;
 		}
 	}
@@ -111,9 +111,21 @@ void GameLogic::update()
 			{
 				if(ourPlayer->onCollision(collideableToCheck))	
 				{
-					cout << typeid(*collideableToCheck).name() << endl;
-				
 					actuallyCollided = true;
+					cout << typeid(*collideableToCheck).name() << endl;
+					if(typeid(*collideableToCheck) == typeid(Mole))
+					{
+						
+					}
+					else if(typeid(*collideableToCheck) == typeid(Coin))
+					{
+						(ourPlayer->getStats()->moleAttacks)++;
+						thisRowOfCollideables->erase(thisRowOfCollideables->begin() + j);
+						delete collideableToCheck;
+						actuallyCollided = false;
+
+					}
+				
 				}
 			}
 		}
@@ -139,8 +151,7 @@ void GameLogic::update()
 				if(typeid(*collideableToCheck) == typeid(Mole))
 				{
 					//If it is up it draws the mole as up if it is down then it is down
-					//collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
-					collideableToCheck->draw(*collideableToCheck->getAnim()->at(1));
+					collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
 				}
 				else
 				{

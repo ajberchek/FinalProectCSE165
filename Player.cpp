@@ -6,7 +6,7 @@ Player::Player(const Stats * stat)
 }
 Player::Player()
 {
-
+	stats = new Stats();
 }
 
 // Need Avery to explain/implement after all the other Collideable
@@ -18,13 +18,15 @@ bool Player::onCollision(Collideable * c)
 	//Wall wall;
 	//Coin coin;
 	//Mole mole;
-	if(c->collisionBox->isOverlap(collisionBox))
+	if(c->onCollision(this))
 	{
 		
 		if (typeid(*c) == typeid(Door)) {}
 		else if (typeid(*c) == typeid(Wall)) {}
 		else if (typeid(*c) == typeid(Coin)) {}
-		else if (typeid(*c) == typeid(Mole)) {}
+		else if (typeid(*c) == typeid(Mole)) 
+		{
+		}
 		else 
 		{
 			std::cout<<"Player colliding with player!!! How strange!"<<std::endl;

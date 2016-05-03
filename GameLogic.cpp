@@ -77,19 +77,19 @@ void GameLogic::update()
 		{
 			case GLUT_KEY_LEFT:
 				//xMover = newW * -1;
-				xMover = -20;
+				xMover = -200;
 				break;
 			case GLUT_KEY_RIGHT:
 				//xMover = newW;
-				xMover = 20;
+				xMover = 200;
 				break;
 			case GLUT_KEY_UP:
 				//yMover = newH;
-				yMover = -20;
+				yMover = -200;
 				break;
 			case GLUT_KEY_DOWN:
 				//yMover = newH*-1;
-				yMover = 20;
+				yMover = 200;
 				break;
 		}
 	}
@@ -139,7 +139,8 @@ void GameLogic::update()
 				if(typeid(*collideableToCheck) == typeid(Mole))
 				{
 					//If it is up it draws the mole as up if it is down then it is down
-					collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
+					//collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
+					collideableToCheck->draw(*collideableToCheck->getAnim()->at(1));
 				}
 				else
 				{

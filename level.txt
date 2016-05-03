@@ -1,8 +1,9 @@
-#  p #mc
-#   c#mc
-####  dc
-#   c#mc
-#   c#mc
-#   c#mc
-#   c#mc
-cccccccc
+#  p #mcm
+#   c#mcm
+##    dcm
+#   c#mcm
+#   c#mcm
+#   c#mcm
+#   c#mcm
+ccccccccm
+mmmmmmmmm

@@ -21,7 +21,6 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
-   glutFullScreen();
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],

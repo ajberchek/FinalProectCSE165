@@ -18,10 +18,8 @@ void Animation::windowToScene(float &x, float &y)
 	y = 1.0f - (2.0f*(y/float(newH)));
 }
 
-void Animation::animate(float x, float y, float w, float h) 	 // Why not take in a Collideable container instead
+void Animation::animate(float x, float y, float w, float h) 	 
 {	
-
-
 	Animation::windowToScene(x,y);
 
 	//cout << "NewW: " << newW << " NewH: " << newH << endl;
@@ -51,10 +49,11 @@ void Animation::animate(float x, float y, float w, float h) 	 // Why not take in
 	glTexCoord2f(0.0f, 0.0f);	glVertex2d(x, y-h);
 	glEnd();
 	
-
-	it = ((it+1) % imgPtr->size());
-
-
+	// Fixing this code so there's no possibility of overflow
+	//it = ((it+1) % imgPtr->size());
+	if ( !(++it % imgPtr->size()))
+		it = 0;
+	
 	glDisable(GL_TEXTURE_2D);
 	
 	

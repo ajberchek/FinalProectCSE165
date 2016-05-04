@@ -62,6 +62,8 @@ void AppWindow::handle ( const Event& e )
 
    const float incx=0.02f;
    const float incy=0.02f;
+	// Considering checking if the user will move out of bound. Have a function to check and return true if not out of bound and false if out of bound?
+	// Currently it is possible for user to move to the edge and move past where we can see the user. 
    if ( e.type==SpecialKey )
     switch ( e.key )
     { 
@@ -69,15 +71,15 @@ void AppWindow::handle ( const Event& e )
 			_markx-=incx; 
 			gLogic->eventQueue.push(e);
 			break;
-	      case GLUT_KEY_RIGHT: 
+	     	case GLUT_KEY_RIGHT: 
 			_markx+=incx; 
 			gLogic->eventQueue.push(e);
 			break;
-	      case GLUT_KEY_UP:    
+	      	case GLUT_KEY_UP:    
 			_marky+=incy; 
 			gLogic->eventQueue.push(e);
 			break;
-	      case GLUT_KEY_DOWN:  
+	      	case GLUT_KEY_DOWN:  
 			_marky-=incy; 
 			gLogic->eventQueue.push(e);
 			break;

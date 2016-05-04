@@ -30,5 +30,6 @@ class Collideable
 		void setAnim(vector<Animation *> * toAdd);
 		vector<Animation *> * getAnim();
 		CollisionShape * collisionBox;
+		int animationIndex;
 };
 #endif

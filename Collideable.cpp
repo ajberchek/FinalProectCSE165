@@ -7,6 +7,7 @@ Collideable::Collideable()
 	w = 0;
 	h = 0;
 	maxSpeed = 0;
+	animationIndex = 0;
 }
 Collideable::~Collideable()
 {

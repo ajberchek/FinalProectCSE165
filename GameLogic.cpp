@@ -13,6 +13,7 @@ GameLogic::GameLogic()
 	cc = loadLevel(LEVEL_FILENAME, animFactory);
 	lastTime = updateTime();
 	eventQueue = queue<GlutWindow::Event>();
+	moleLog = new MoleLogic(cc->mainCharacterPtr);
 }
 
 CollideableContainer * GameLogic::loadLevel(string levelFileName, AnimationFactory * animFact)
@@ -44,6 +45,10 @@ CollideableContainer * GameLogic::loadLevel(string levelFileName, AnimationFacto
 
 void GameLogic::update()
 {
+
+	moleLog->updateMoles(cc);
+
+
 	bool actuallyCollided = false;
 	Player * ourPlayer = cc->mainCharacterPtr;
 	

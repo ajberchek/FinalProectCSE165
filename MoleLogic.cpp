@@ -9,7 +9,7 @@ MoleLogic::MoleLogic(Player * p)
 	changeBias = 0.1;
 	coeffRand = 10;
 	coeffDist = 3;
-	moleStillTimeInMillis = 3000;
+	moleStillTimeInMillis = 1500;
 }
 
 void MoleLogic::randSelectState(Mole ** mole)
@@ -17,9 +17,9 @@ void MoleLogic::randSelectState(Mole ** mole)
 
 	chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
 
-	unsigned long long currentTime = (unsigned long long)ms.count();
-	unsigned long long timeDiff = currentTime - (*mole)->getTime();
-	if(timeDiff > moleStillTimeInMillis + (rand() % 2000)/2000.0)
+	long currentTime = (long)ms.count();
+	long timeDiff = currentTime - (*mole)->getTime();
+	if(timeDiff > moleStillTimeInMillis + (rand() % 4000))
 	{
 		cout << "Time difference between moles is: " << timeDiff << endl;
 		//We want to add in some bias for the state to change.

@@ -34,5 +34,5 @@ bool Mole::onCollision(Collideable * c)
 	cout << "Is up is: " << isUp << endl;
 
 
-	return collisionBox->isOverlap(c->collisionBox) && isUp;
+	return (collisionBox->isOverlap(c->collisionBox) || c->collisionBox->isOverlap(collisionBox))&& isUp;
 }

@@ -18,7 +18,7 @@ bool Player::onCollision(Collideable * c)
 	//Wall wall;
 	//Coin coin;
 	//Mole mole;
-	if(c->onCollision(this))
+	if(c->onCollision(this) || collisionBox->isOverlap(c->collisionBox))
 	{
 		
 		if (typeid(*c) == typeid(Door)) {}

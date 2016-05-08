@@ -68,7 +68,7 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 			GLuint * toAdd = new GLuint;
 
 			cout << "Grabbing GLuint from: " << arrPair[2] << endl;
-			
+		/*	
 			*toAdd = SOIL_load_OGL_texture
 				(
 					arrPair[2].c_str(), 
@@ -76,6 +76,14 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 					SOIL_CREATE_NEW_ID, 
 					SOIL_FLAG_INVERT_Y
 					);	
+					*/
+			*toAdd = SOIL_load_OGL_texture
+				(
+					arrPair[2].c_str(), 
+					SOIL_LOAD_AUTO, 
+					SOIL_CREATE_NEW_ID,
+					SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_MULTIPLY_ALPHA
+				);
 
 			cout << "uhmmm hi" << endl;
 

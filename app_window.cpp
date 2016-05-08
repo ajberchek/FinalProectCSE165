@@ -3,7 +3,10 @@
 # include "app_window.h"
 # include <vector>
 # include "GameLogic.h"
-
+# include<string.h>
+# include<sstream>
+#include <chrono>
+#include <thread>
 
 float newH;
 float newW;
@@ -21,6 +24,9 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
+   m=0;
+   s=10;
+   text="";
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],
@@ -151,13 +157,49 @@ void AppWindow::draw ()
 
    // Swap buffers
    //
+	
    
    if(gLogic)
    {
 	   gLogic->update();
    }
+   	/*stringstream ss;
+	ss<<m;
+	ss<<":";
+	ss<<s;
+	text = ss.str();
+	gLogic->updateTime();
+	s = s-gLogic->getelapsedTime();
+   drawText(text.data(), text.size(),1,1);*/	//580
+   
+   
+  /* glBegin( GL_POLYGON );
+	glColor3f (0,1,0);
+	glVertex2f (-1,1);
+	glVertex2f (1,1);
+	glVertex2f (1,-1);
+	glVertex2f (-1,-1);
+	glEnd();*/
    
    glFlush();         // flush the pipeline (usually not necessary)
    glutSwapBuffers(); // we were drawing to the back buffer, now bring it to the front
 }
-
+void AppWindow::drawText(const char * text, int length, int x, int y)
+{
+	glMatrixMode(GL_PROJECTION);
+	double * matrix = new double[16];
+	glGetDoublev(GL_PROJECTION_MATRIX, matrix);
+	glLoadIdentity();
+	glOrtho(0,800,0,600, -5,5);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glPushMatrix();
+	glLoadIdentity();
+	glRasterPos2i(x,y);
+	for(int i = 0; i < length; i++)
+		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)text[i]);
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixd(matrix);
+	glMatrixMode(GL_MODELVIEW);
+}

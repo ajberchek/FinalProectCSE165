@@ -55,8 +55,12 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 		}
 		if(nonConstCS->getX() <= x && nonConstCS->getX()+ nonConstCS->getWidth() >= x+width)//if its between the x but goes through the rectangle
 		{
+<<<<<<< HEAD
 			cout << "CHECKING D" << endl;
 			if(nonConstCS->getY() >= y && nonConstCS->getY()+ nonConstCS->getHeight() <= y+height)
+=======
+			if(nonConstCS->getY() <= y && nonConstCS->getY()+ nonConstCS->getHeight() >= y+height)
+>>>>>>> 30bf8a87c599cb694a35a65dc7b11c97ffd45471
 			{
 				return true;
 			}

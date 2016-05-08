@@ -14,7 +14,7 @@ class LevelBuilderAlgorithmText : public LevelBuilderAlgorithm
 		string fileForLvl;
 	public:
 		LevelBuilderAlgorithmText(string lvlFile);
-		void genLvl(CollideableContainer * cc);
+		void genLvl(vector<CollideableContainer *> * cc);
 	};
 
 #endif

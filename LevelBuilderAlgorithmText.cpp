@@ -15,7 +15,39 @@ LevelBuilderAlgorithmText::LevelBuilderAlgorithmText(string mazeFile)
 	fileForLvl = mazeFile;
 }
 
-void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
+void AssignPositions(CollideableContainer ** ccPtr, int maxTextWidth, int lineCount)
+{
+	CollideableContainer * cc = *ccPtr;
+//Assign x and y values for the different objects
+		//Keep in mind that the top left of the screen is 0,0 and the bottom right is width,height
+	float widthPerObj = newW/(float)maxTextWidth;
+	float heightPerObj = newH/(float)lineCount;
+	for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
+	{
+		vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(i);
+		for(int j = 0; j < currentRow->size(); ++j)
+		{
+			Collideable * toEdit = currentRow->at(j);
+			if(toEdit)
+			{
+				toEdit->collisionBox = new CollisionShapeRect(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+				if(toEdit == cc->mainCharacterPtr)
+				{
+					toEdit->update(widthPerObj*j+(0.05*widthPerObj),heightPerObj*i + (0.05*heightPerObj),widthPerObj*0.8,heightPerObj*0.8);
+				}
+				else
+				{
+					toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
+				}
+				
+			}
+		}
+
+	}
+}
+
+
+void LevelBuilderAlgorithmText::genLvl(vector<CollideableContainer *> * ccVec)
 {
 	int lineCount = 0;
 	int maxTextWidth = 0;
@@ -23,12 +55,26 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 	cout << "Generating Level with filepath: " << fileForLvl << endl;
 	string line;
 	ifstream mazeFile(fileForLvl.c_str());
+
+	CollideableContainer * cc = new CollideableContainer();
+
 	if(mazeFile.is_open())
 	{
 		while(getline(mazeFile,line))
 		{
 			cout << line << endl;
 			cout << cc->collideableFieldPtr->size() << endl;
+			if(line == "nn" || line == "nn\n")
+			{
+				cout << line << endl;
+				cout << "*****************newLine***********************" << endl;
+				AssignPositions(&cc,maxTextWidth,lineCount);
+				ccVec->push_back(cc);
+				cc = new CollideableContainer();
+				maxTextWidth = 0;
+				lineCount = 0;
+				continue;
+			}
 			if(cc->collideableFieldPtr->size() <= lineCount)
 			{
 				cc->collideableFieldPtr->push_back(new vector<Collideable *>);
@@ -72,34 +118,11 @@ void LevelBuilderAlgorithmText::genLvl(CollideableContainer * cc)
 			lineCount++;
 		}
 
-		//Assign x and y values for the different objects
-		//Keep in mind that the top left of the screen is 0,0 and the bottom right is width,height
-		float widthPerObj = newW/(float)maxTextWidth;
-		float heightPerObj = newH/(float)lineCount;
-		for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
-		{
-			vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(i);
-			for(int j = 0; j < currentRow->size(); ++j)
-			{
-				Collideable * toEdit = currentRow->at(j);
-				if(toEdit)
-				{
-					toEdit->collisionBox = new CollisionShapeRect(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
-					if(toEdit == cc->mainCharacterPtr)
-					{
-						toEdit->update(widthPerObj*j+(0.05*widthPerObj),heightPerObj*i + (0.05*heightPerObj),widthPerObj*0.8,heightPerObj*0.8);
-					}
-					else
-					{
-						toEdit->update(widthPerObj*j,heightPerObj*i,widthPerObj,heightPerObj);
-					}
-					
-				}
-			}
-
-		}
+		AssignPositions(&cc,maxTextWidth,lineCount);
+		ccVec->push_back(cc);
 
 	}
+
 }
 
 

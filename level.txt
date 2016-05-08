@@ -1,9 +1,19 @@
-#  p #mcm
-#   c#mcm
-##    dcm
-#   c#mcm
-#   c#mcm
-#   c#mcm
-#   c#mcm
-ccccccccm
-mmmmmmmmm
+##################
+# p     #mmc#cccc#
+#           #cccc#
+####   #c   ######
+#mc#   #m        #
+#mc#   #c#####   #
+#            #cmc#
+###########  #   #
+#mcmcmcmcmc ##   #
+#cmcmcmcmcc ##   #
+#            #   #
+#    #########   #
+#                #  
+#    ########    #
+#   ## cc        #
+#   #c#########  #
+#   ccc       #  #
+#   cmm cc    #  d
+##################

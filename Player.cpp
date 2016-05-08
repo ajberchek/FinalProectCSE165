@@ -26,6 +26,8 @@ bool Player::onCollision(Collideable * c)
 		else if (typeid(*c) == typeid(Coin)) {}
 		else if (typeid(*c) == typeid(Mole)) 
 		{
+			Mole * thisMole = dynamic_cast<Mole*>(c);
+			return thisMole->getState();
 		}
 		else 
 		{

@@ -31,8 +31,5 @@ void Mole::update(long Time, bool State)
 
 bool Mole::onCollision(Collideable * c)
 {
-	cout << "Is up is: " << isUp << endl;
-
-
 	return (collisionBox->isOverlap(c->collisionBox) || c->collisionBox->isOverlap(collisionBox))&& isUp;
 }

@@ -133,7 +133,7 @@ void GameLogic::update()
 					cout << typeid(*collideableToCheck).name() << endl;
 					if(typeid(*collideableToCheck) == typeid(Mole))
 					{
-						
+						//Increment hit count or launch the moles attack or something
 					}
 					else if(typeid(*collideableToCheck) == typeid(Coin))
 					{

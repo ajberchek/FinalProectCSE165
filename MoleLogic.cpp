@@ -21,7 +21,6 @@ void MoleLogic::randSelectState(Mole ** mole)
 	long timeDiff = currentTime - (*mole)->getTime();
 	if(timeDiff > moleStillTimeInMillis + (rand() % 4000))
 	{
-		cout << "Time difference between moles is: " << timeDiff << endl;
 		//We want to add in some bias for the state to change.
 		double randContribution = double(rand()%100000)/100000.0;
 		double screenHypotenuse = double(sqrt(newW*newW+ newH*newH));
@@ -49,6 +48,12 @@ void MoleLogic::randSelectState(Mole ** mole)
 			otherBias /= (coeffDist + coeffRand);
 			
 			overallCutoff = 0.6;
+
+			if(playa->collisionBox->isOverlap((*mole)->collisionBox) || (*mole)->collisionBox->isOverlap(playa->collisionBox))
+			{
+				overallCutoff = 100000000;//if the player is over the mole then the mole cant move up because the player is on it
+			}
+
 		}
 
 

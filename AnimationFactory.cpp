@@ -21,7 +21,6 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 
 
 
-	cout << "The path to the config is: " << nameOfConfig << endl;
 	
 	string line;
 	ifstream configFile((nameOfConfig).c_str());
@@ -29,7 +28,6 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 	{
 		while(getline(configFile,line))
 		{//
-			cout << line << endl;
 			int wordCount = 0;
 			int charCount = 0;
 			string arrPair[3];
@@ -61,13 +59,11 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 			if(!imgMap.count(arrPair[0]))
 			{
 				//This means our key was not found in the map, so we create an entry for it
-				cout << "Adding one" << endl;
 				imgMap[arrPair[0]] = new vector<Animation *>();
 			}
 			
 			GLuint * toAdd = new GLuint;
 
-			cout << "Grabbing GLuint from: " << arrPair[2] << endl;
 		/*	
 			*toAdd = SOIL_load_OGL_texture
 				(
@@ -85,13 +81,11 @@ AnimationFactory::AnimationFactory(string nameOfConfig)
 					SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_MULTIPLY_ALPHA
 				);
 
-			cout << "uhmmm hi" << endl;
 
 
 			//Gets the vector of animation pointers
 			//It then gets the imgPtr from the animation pointer at arrPair[1](the second input in the config file) in the vector of animation pointers
 			//it then pushes our new GLuint texture into that vector of GLuint pointers
-			cout << stoi(arrPair[1].c_str()) << endl;
 			imgMap[arrPair[0]]->push_back(new Animation());
 			imgMap[arrPair[0]]->at(stoi(arrPair[1].c_str()))->imgPtr->push_back(toAdd);
 		}

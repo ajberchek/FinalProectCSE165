@@ -58,7 +58,7 @@ class GlutWindow
     virtual void draw ()=0;
     virtual void handle ( const Event& e ) {}
     virtual void resize ( int w, int h ) {}
-    virtual void idle () { }
+    virtual void idle () { draw();}
  };
 
 #endif // GLUT_WINDOW_H

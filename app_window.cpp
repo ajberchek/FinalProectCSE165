@@ -150,7 +150,10 @@ void AppWindow::draw ()
    // Swap buffers
    //
    
-   gLogic->update();
+   if(gLogic)
+   {
+	   gLogic->update();
+   }
    
    glFlush();         // flush the pipeline (usually not necessary)
    glutSwapBuffers(); // we were drawing to the back buffer, now bring it to the front

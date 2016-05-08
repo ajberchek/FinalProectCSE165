@@ -9,27 +9,37 @@
 
 GameLogic::GameLogic()
 {
+
+	collideableVecIndex = 0;
 	animFactory = new AnimationFactory(CONFIG_FILENAME);
-	cc = loadLevel(LEVEL_FILENAME, animFactory);
+	ccVec = loadLevel(LEVEL_FILENAME, animFactory);
 	lastTime = updateTime();
 	eventQueue = queue<GlutWindow::Event>();
-	moleLog = new MoleLogic(cc->mainCharacterPtr);
+	moleLog = new MoleLogic(mainPlayer);
 }
 
-CollideableContainer * GameLogic::loadLevel(string levelFileName, AnimationFactory * animFact)
+vector<CollideableContainer *> * GameLogic::loadLevel(string levelFileName, AnimationFactory * animFact)
 {
-	CollideableContainer * toRet = new CollideableContainer();
+	vector<CollideableContainer *> * toRet = new vector<CollideableContainer *>();
 	LevelBuilderAlgorithmText * lvlBuild = new LevelBuilderAlgorithmText(levelFileName);
 	lvlBuild->LevelBuilderAlgorithmText::genLvl(toRet);
 
-	for(int i = 0; i < toRet->collideableFieldPtr->size(); ++i)
+	for(int i = 0; i < toRet->size(); ++i)
 	{
-		vector<Collideable *> * thisRow = toRet->collideableFieldPtr->at(i);
-		for(int j = 0; j < thisRow->size(); ++j)
+		CollideableContainer * toLoop = toRet->at(i);
+		for(int j = 0; j < toLoop->collideableFieldPtr->size(); ++j)
 		{
-			if(thisRow->at(j))
+			if(i == 0)
 			{
-				animFact->createAnimation(thisRow->at(j));
+				mainPlayer = toLoop->mainCharacterPtr;
+			}
+			vector<Collideable *> * thisRow = toLoop->collideableFieldPtr->at(j);
+			for(int k = 0; k < thisRow->size(); ++k)
+			{
+				if(thisRow->at(k))
+				{
+					animFact->createAnimation(thisRow->at(k));
+				}
 			}
 		}
 	}
@@ -46,11 +56,14 @@ CollideableContainer * GameLogic::loadLevel(string levelFileName, AnimationFacto
 void GameLogic::update()
 {
 
+
+	CollideableContainer * cc = ccVec->at(collideableVecIndex);
+
 	moleLog->updateMoles(cc);
 
 
 	bool actuallyCollided = false;
-	Player * ourPlayer = cc->mainCharacterPtr;
+	Player * ourPlayer = mainPlayer;
 	
 	float currentX, currentY, currentW, currentH;
 
@@ -130,6 +143,22 @@ void GameLogic::update()
 						actuallyCollided = false;
 
 					}
+					else if(typeid(*collideableToCheck) == typeid(Door))
+					{
+						if(collideableVecIndex < ccVec->size()-1)
+						{
+							collideableVecIndex++;
+							Collideable * hasCoordinates = ccVec->at(collideableVecIndex)->mainCharacterPtr;
+							mainPlayer->Collideable::update(hasCoordinates->getX(),hasCoordinates->getY(),hasCoordinates->getW(),hasCoordinates->getH());
+							actuallyCollided = false;
+							continue;
+
+						}
+						else
+						{
+							//Game Over
+						}
+											}
 				
 				}
 			}
@@ -157,6 +186,10 @@ void GameLogic::update()
 				{
 					//If it is up it draws the mole as up if it is down then it is down
 					collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
+				}
+				else if(typeid(*collideableToCheck) == typeid(Player))
+				{
+					mainPlayer->draw(*collideableToCheck->getAnim()->at(0));
 				}
 				else
 				{

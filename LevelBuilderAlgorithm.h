@@ -4,6 +4,6 @@
 class LevelBuilderAlgorithm 
 {
 	public:
-		virtual void genLvl(CollideableContainer * cc) = 0;
+		virtual void genLvl(vector<CollideableContainer *> * cc) = 0;
 };
 #endif

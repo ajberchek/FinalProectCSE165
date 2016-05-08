@@ -12,7 +12,9 @@ class GameLogic
 {
 	private:
 		unsigned long long lastTime;
-		CollideableContainer * cc;
+		vector<CollideableContainer *> * ccVec;
+		int collideableVecIndex;
+		Player * mainPlayer;
 		AnimationFactory * animFactory;
 		LevelBuilderAlgorithmText * lvlBuilderAlgo;
 		MoleLogic * moleLog;
@@ -21,7 +23,7 @@ class GameLogic
 		queue<GlutWindow::Event> eventQueue;
 		void update();
 		unsigned long long updateTime();
-		CollideableContainer * loadLevel(string levelFile, AnimationFactory * animFact);
+		vector<CollideableContainer *> * loadLevel(string levelFile, AnimationFactory * animFact);
 
 
 };

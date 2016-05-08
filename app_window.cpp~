@@ -160,14 +160,14 @@ void AppWindow::draw ()
    {
 	   gLogic->update();
    }
-   	/*stringstream ss;
+   	stringstream ss;
 	ss<<m;
 	ss<<":";
 	ss<<s;
 	text = ss.str();
 	gLogic->updateTime();
 	s = s-gLogic->getelapsedTime();
-   drawText(text.data(), text.size(),1,1);*/	//580
+   drawText(text.data(), text.size(),1,1);	//580
    glFlush();         // flush the pipeline (usually not necessary)
    glutSwapBuffers(); // we were drawing to the back buffer, now bring it to the front
 }

@@ -23,7 +23,7 @@ class AppWindow : public GlutWindow
     AppWindow ( const char* label, int x, int y, int w, int h );
     void windowToScene ( float& x, float &y );
     void drawText(const char * text, int length, int x, int y);
-    void get();
+    unsigned int updateTime();
     
    private : // functions derived from the base class
     virtual void handle ( const Event& e );

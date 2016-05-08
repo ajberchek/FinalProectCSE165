@@ -22,6 +22,15 @@ void AssignPositions(CollideableContainer ** ccPtr, int maxTextWidth, int lineCo
 		//Keep in mind that the top left of the screen is 0,0 and the bottom right is width,height
 	float widthPerObj = newW/(float)maxTextWidth;
 	float heightPerObj = newH/(float)lineCount;
+
+	(*ccPtr)->updateScreenSize(newW, newH);
+
+	cout << "Width of screen: " << newW << endl;
+	cout << "Hight of screen: " << newH << endl;
+
+	cout << "Text Width" << maxTextWidth << endl;
+	cout << "Line count: " << lineCount << endl;
+
 	for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
 	{
 		vector<Collideable *> * currentRow = cc->collideableFieldPtr->at(i);

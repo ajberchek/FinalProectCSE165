@@ -181,7 +181,19 @@ void GameLogic::update()
 			Collideable * collideableToCheck = thisRowOfCollideables->at(j);
 			if(collideableToCheck)
 			{
+
+				if(typeid(*collideableToCheck) == typeid(Player))
+				{
+					collideableToCheck = mainPlayer;
+				}
 				
+				currentX = collideableToCheck->getX();
+				currentY = collideableToCheck->getY();
+				currentW = collideableToCheck->getW();
+				currentH = collideableToCheck->getH();
+
+				collideableToCheck->update(currentX * newW / cc->getScreenWidth(), currentY * newH / cc->getScreenHeight(), currentW * newW/cc->getScreenWidth(), currentH * newH/ cc->getScreenHeight());
+
 				if(typeid(*collideableToCheck) == typeid(Mole))
 				{
 					//If it is up it draws the mole as up if it is down then it is down
@@ -195,6 +207,9 @@ void GameLogic::update()
 				{
 					collideableToCheck->draw(*collideableToCheck->getAnim()->at(0));
 				}
+
+				collideableToCheck->update(currentX, currentY, currentW, currentH);
+
 			}
 			
 		}

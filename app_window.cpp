@@ -84,6 +84,8 @@ void AppWindow::resize ( int w, int h )
  {
    // Define that OpenGL should use the whole window for rendering
    cout << "resize called: " << endl;
+   cout << "Resize to this width: " << w << endl;
+   cout << "Resize to this height: " << h << endl;
    glViewport( 0, 0, w, h );
    _w=w; _h=h;
    newW = w;

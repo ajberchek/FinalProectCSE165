@@ -44,7 +44,6 @@ void Animation::animate(float x, float y, float w, float h)
 	
 	// Drawing the Texture
 	glBegin(GL_POLYGON);											// texCoord for tex, vertex for where to map
-														// texCoord is set to non-stretching, 1 to 1 mapping.
 	glTexCoord2f(0.0f, 1.0f);	glVertex2d(x, y);
 	glTexCoord2f(1.0f, 1.0f);	glVertex2d(x+w, y);
 	glTexCoord2f(1.0f, 0.0f);	glVertex2d(x+w, y-h);

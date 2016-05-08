@@ -13,3 +13,9 @@ float CollideableContainer::getScreenHeight()
 	return screenHeight;
 }
 
+void CollideableContainer::updateScreenSize(float newWidth, float newHeight)
+{
+	screenWidth = newWidth;
+	screenHeight = newHeight;
+}
+

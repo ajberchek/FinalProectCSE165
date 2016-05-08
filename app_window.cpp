@@ -24,9 +24,10 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
-   m=0;
-   s=10;
-   text="";
+   scor = 0;
+   s = 0;
+   time = "";
+   score = "";
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],
@@ -90,6 +91,8 @@ void AppWindow::resize ( int w, int h )
  {
    // Define that OpenGL should use the whole window for rendering
    cout << "resize called: " << endl;
+   cout << "Resize to this width: " << w << endl;
+   cout << "Resize to this height: " << h << endl;
    glViewport( 0, 0, w, h );
    _w=w; _h=h;
    newW = w;
@@ -155,14 +158,18 @@ void AppWindow::draw ()
 
    // Swap buffers
    //
-   	stringstream ss;
-	ss<<m;
-	ss<<":";
-	ss<<s;
-	text = ss.str();
-	//gLogic->updateTime();
-	//s = s-gLogic->getelapsedTime();
-   	drawText(text.data(), text.size(),1,590);	//580
+   	stringstream ts, ss;
+   	ts<<"Time : ";
+	ts<<s;
+	time = ts.str();
+   	drawText(time.data(), time.size(),1,590);	//580
+	s = gLogic->getTime();
+	
+	ss<<"Score : ";
+	ss<<scor;
+	score = ss.str();
+	drawText(score.data(), score.size(),500,590);
+	scor = gLogic->getScore();
 	
 	glBegin( GL_POLYGON );
 	glColor3f (0,0,1);
@@ -172,6 +179,16 @@ void AppWindow::draw ()
 	glVertex2f (-1,.95);
 	glEnd();
 	glColor3f (1,1,1);
+	/*if(s > 60)
+   	{
+   		m += 1;
+   		s -= 60;
+   	}
+   	if(m > 0 && s <= 0)
+   	{
+   		m -=1;
+   		s += 60;
+   	}*/
    if(gLogic)
    {
 	   gLogic->update();

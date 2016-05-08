@@ -17,13 +17,13 @@ class AppWindow : public GlutWindow
     enum MenuEv { evOption0, evOption1 };
     float _markx, _marky;
     int _w, _h;
-    int m, s;
-	string text;
+    int s, scor;
+	string time, score;
    public :
     AppWindow ( const char* label, int x, int y, int w, int h );
     void windowToScene ( float& x, float &y );
     void drawText(const char * text, int length, int x, int y);
-    void get();
+   //void get();
     
    private : // functions derived from the base class
     virtual void handle ( const Event& e );

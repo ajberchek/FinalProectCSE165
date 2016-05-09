@@ -1,4 +1,6 @@
 Mole$0$Images/down.PNG
+Mole$1$Images/halfup.PNG
+Mole$1$Images/up.bmp
 Mole$1$Images/angry.PNG
 Mole$2$Images/halfup.PNG
 Mole$2$Images/angry.PNG

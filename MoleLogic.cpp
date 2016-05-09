@@ -15,6 +15,10 @@ MoleLogic::MoleLogic(Player * p)
 
 void MoleLogic::randSelectState(Mole ** mole)
 {
+chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
+
+	long currentTime = (long)ms.count();
+	long timeDiff = currentTime - (*mole)->getTime();
 
 
 	if((*mole)->currentMoleStatus == Mole::moleStatus::ATTACKING)
@@ -44,7 +48,7 @@ void MoleLogic::randSelectState(Mole ** mole)
 
 		(*mole)->collisionBox = ourCollisionBox;
 
-		if(playa->onCollision((*mole)))
+		if(playa->onCollision((*mole)) && currentTime-playa->lastCollisionTimeMillis > playa->invincibilityPeriodMillis)
 		{
 			cout << "******++++++++++ATTACK+++++++******" << endl;
 			(*mole)->currentMoleStatus = Mole::moleStatus::ATTACKING;
@@ -54,6 +58,9 @@ void MoleLogic::randSelectState(Mole ** mole)
 			ourCollisionBox->update(currentX,currentY,currentW,currentH);
 
 			(*mole)->collisionBox = ourCollisionBox;
+
+			playa->lastCollisionTimeMillis = currentTime;
+
 			return;
 		}
 
@@ -66,11 +73,7 @@ void MoleLogic::randSelectState(Mole ** mole)
 
 
 
-	chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
-
-	long currentTime = (long)ms.count();
-	long timeDiff = currentTime - (*mole)->getTime();
-	if(timeDiff > moleStillTimeInMillis + (rand() % 4000))
+		if(timeDiff > moleStillTimeInMillis + (rand() % 4000))
 	{
 		//We want to add in some bias for the state to change.
 		double randContribution = double(rand()%100000)/100000.0;

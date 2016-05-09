@@ -4,11 +4,13 @@ Player::Player(const Stats * stat)
 {
 	stats = const_cast<Stats *>(stat);
 	lastAnimTimeMillis = 0;
+	lastCollisionTimeMillis = 0;
 }
 Player::Player()
 {
 	stats = new Stats();
 	lastAnimTimeMillis = 0;
+	lastCollisionTimeMillis = 0;
 }
 
 // Need Avery to explain/implement after all the other Collideable

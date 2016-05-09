@@ -136,7 +136,7 @@ void GameLogic::update()
 					if(typeid(*collideableToCheck) == typeid(Mole))
 					{
 						//Increment hit count or launch the moles attack or something
-						ourPlayer->getStats()->scores -= 5;
+						actuallyCollided = false;
 					}
 					else if(typeid(*collideableToCheck) == typeid(Coin))
 					{
@@ -223,18 +223,34 @@ void GameLogic::update()
 	//TODO: update mole logic
 
 }
-unsigned long long GameLogic::getTime()
+signed long long GameLogic::getTime()
 {
-	timePass = (updateTime()-startTime);
+	timePass = signed(updateTime()-startTime);
 	timePass /= 1000;
-	return mainPlayer->getStats()->time-timePass;
+	cout<<"jaspal : "<<signed(mainPlayer->getStats()->time-timePass)<<endl;
+	if(signed(mainPlayer->getStats()->time-timePass) <= 0)
+	{
+		mainPlayer->getStats()->time = 0;
+		return 0;
+	}	
+	else
+		return signed(mainPlayer->getStats()->time-timePass);
 }
-unsigned long long GameLogic::getScore()
+signed long long GameLogic::getScore()
 {
-	timePass = (updateTime()-startTime);
+	timePass = signed(updateTime()-startTime);
 	timePass /= 1000;
+	cout<<"signh : "<<signed(mainPlayer->getStats()->scores + timePass)<<endl;
 	//mainPlayer->getStats()->scores += timePass;
-	return mainPlayer->getStats()->scores + timePass;
+	if(signed(mainPlayer->getStats()->scores + timePass) <= 0)
+	{
+		mainPlayer->getStats()->scores = 0;
+		return 0;
+	}	
+	else
+	{
+		return signed(mainPlayer->getStats()->scores + timePass);
+	}
 }
 
 unsigned long long GameLogic::updateTime()

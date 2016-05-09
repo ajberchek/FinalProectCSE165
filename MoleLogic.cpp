@@ -60,8 +60,18 @@ void MoleLogic::randSelectState(Mole ** mole)
 		double overallChoice = otherBias*(1-changeBias) + changeBias;
 		if(overallChoice >= overallCutoff)
 		{
+			if((*mole)->getState())
+			{
+				(*mole)->currentMoleStatus = Mole::moleStatus::FALLING;
+				(*mole)->animationIndex = 3;
+			}
+			else
+			{
+				(*mole)->currentMoleStatus = Mole::moleStatus::RISING;
+				(*mole)->animationIndex = 2;
+			}
+			(*mole)->getAnim()->at((*mole)->animationIndex)->it = 0;
 			(*mole)->setState(!(*mole)->getState());
-			(*mole)->animationIndex = 0;
 		}
 		(*mole)->setTime((long)currentTime);
 	}	

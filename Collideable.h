@@ -13,12 +13,10 @@ class Collideable
 		Collideable();
 		virtual ~Collideable();
 		virtual bool onCollision(Collideable * c) = 0;
-		virtual void draw(Animation  & a)
+		virtual int draw()
 		{
 			//cout << "x,y,w,h: " << x << ", " << y << ", " << w << ", " << h << endl;
-			a.animate(x,y,w,h);
-			
-			
+			return anim->at(animationIndex)->animate(x,y,w,h);
 		}
 		//virtual void draw(const Animation  & a) = 0;				//changed from Animation *
 		void update(float x, float y, float w, float h);	//originally by Hang as (float x = x, float y = y, float w = w, float h = h);
@@ -31,5 +29,6 @@ class Collideable
 		vector<Animation *> * getAnim();
 		CollisionShape * collisionBox;
 		int animationIndex;
+		int vecAnimationIndex;
 };
 #endif

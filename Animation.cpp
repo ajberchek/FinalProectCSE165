@@ -1,6 +1,5 @@
 #include "Animation.h"
 #include <iostream>
-#include "commonVariable.h"
 
 using namespace std;
 
@@ -18,8 +17,11 @@ void Animation::windowToScene(float &x, float &y)
 	y = 1.0f - (2.0f*(y/float(newH)));
 }
 
-void Animation::animate(float x, float y, float w, float h) 	 
+int Animation::animate(float x, float y, float w, float h) 	 
 {	
+
+	it = ((it) % imgPtr->size());
+
 	Animation::windowToScene(x,y);
 
 	//cout << "NewW: " << newW << " NewH: " << newH << endl;
@@ -51,13 +53,12 @@ void Animation::animate(float x, float y, float w, float h)
 	glEnd();
 	
 	// Fixing this code so there's no possibility of overflow
-	//it = ((it+1) % imgPtr->size());
-	if ( !(++it % imgPtr->size()))
-		it = 0;
+	
 	
 	glDisable(GL_TEXTURE_2D);
 	
 	
 	// Current Isssue: Which element of the vector to render?
 	// Technical Deliberation: Parameters such as lightning and background. 
+	return it;
 }

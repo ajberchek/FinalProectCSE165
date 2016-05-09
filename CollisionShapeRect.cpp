@@ -29,7 +29,6 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 		}*/
 		if(nonConstCS->getX() <= x && nonConstCS->getX()+nonConstCS->getWidth() >= x)	//left corner
 		{
-			cout << "CHECKING B" << endl;
 			if(nonConstCS->getY() <= y && nonConstCS->getY()+nonConstCS->getHeight() >= y)	//upper left in the rectangle
 			{
 				return true;
@@ -41,7 +40,6 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 		}	
 		else if(nonConstCS->getX() <= x+width && nonConstCS->getX()+nonConstCS->getWidth() >= x+width)//right corner
 		{
-			cout << "CHECKING C" << endl;
 			if(nonConstCS->getY() <= y && nonConstCS->getY()+nonConstCS->getHeight() >= y)	//upper right in the rectangle
 			{
 				return true;
@@ -55,7 +53,6 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 		}
 		if(nonConstCS->getX() <= x && nonConstCS->getX()+ nonConstCS->getWidth() >= x+width)//if its between the x but goes through the rectangle
 		{
-			cout << "CHECKING D" << endl;
 			if(nonConstCS->getY() >= y && nonConstCS->getY()+ nonConstCS->getHeight() <= y+height)
 			{
 				return true;
@@ -67,7 +64,6 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 		}
 		if(nonConstCS->getY() <= y && nonConstCS->getY()+ nonConstCS->getHeight() >= y+height)//same as last one but y is between the rectangle like horizontal
 		{
-			cout << "CHECKING E" << endl;
 			if(nonConstCS->getX() >= x && nonConstCS->getX() + nonConstCS->getWidth() <= x+width)
 			{
 				return true;

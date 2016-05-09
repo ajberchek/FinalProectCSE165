@@ -5,6 +5,7 @@
 #include "AnimationFactory.h"
 #include "LevelBuilderAlgorithmText.h"
 #include "MoleLogic.h"
+#include "commonVariable.h"
 
 using namespace std;
 
@@ -26,7 +27,7 @@ class GameLogic
 		queue<GlutWindow::Event> eventQueue;
 		void update();
 		Player * mainPlayer;
-		unsigned long long updateTime();
+		static unsigned long long updateTime();
 		vector<CollideableContainer *> * loadLevel(string levelFile, AnimationFactory * animFact);
 
 

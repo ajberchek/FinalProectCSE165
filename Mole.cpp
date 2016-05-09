@@ -2,6 +2,8 @@
 Mole::Mole(long time, bool state)
 {
 	update(time, state);
+	currentMoleStatus = DOWN;
+	lastAnimTimeMillis = 0;
 }
 bool Mole::getState()
 {
@@ -32,4 +34,52 @@ void Mole::update(long Time, bool State)
 bool Mole::onCollision(Collideable * c)
 {
 	return (collisionBox->isOverlap(c->collisionBox) || c->collisionBox->isOverlap(collisionBox))&& isUp;
+}
+
+unsigned long long getCurrentTime()
+{
+chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
+	return (unsigned long long)ms.count();
+}
+
+
+int Mole::draw()
+{
+
+	int currentGlIndex = getAnim()->at(animationIndex)->it;
+	int newGlIndex = 0;
+	cout << "Mole draw: " << animationIndex << endl;
+	if((currentMoleStatus == RISING || currentMoleStatus == FALLING )&& getCurrentTime() - lastAnimTimeMillis > animPeriodMillis)
+	{
+		//cout << "**********************************" << endl;
+		cout << "***********inrementing index: " << ++getAnim()->at(animationIndex)->it << endl;
+		newGlIndex = Collideable::draw();
+		lastAnimTimeMillis = getCurrentTime();
+	}
+	else
+	{
+		newGlIndex = Collideable::draw();
+	}
+	//cout << "changed iterator is: " << newGlIndex << endl;
+	getAnim()->at(animationIndex)->it = newGlIndex;
+
+	if(currentGlIndex > newGlIndex)
+	{
+		//cout << "&&&&&&&&" << endl;
+		//cout << "animationIndex was: " << animationIndex << endl;
+		if(currentMoleStatus == RISING)
+		{
+			cout << "THE MOLE IS RISINGGGGA;FJSAD;LFAJEWO;RHAJEWOSFJAEWSO;FJAEWOSIFHESADLOGHAO;" << endl;
+			animationIndex = 1;
+			currentMoleStatus = ANGRY;
+		}
+		else if(currentMoleStatus == FALLING)
+		{
+			cout << "TEHRE GOES DA MOLE FALLING AGAIN!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+			animationIndex = 0;
+			currentMoleStatus = DOWN;
+		}
+		cout << "animationIndex is now: " << animationIndex << endl;
+	}
+	return true;
 }

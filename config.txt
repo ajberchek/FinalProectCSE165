@@ -1,5 +1,9 @@
 Mole$0$Images/down.PNG
 Mole$1$Images/angry.PNG
+Mole$2$Images/halfup.PNG
+Mole$2$Images/angry.PNG
+Mole$3$Images/halfup.PNG
+Mole$3$Images/down.PNG
 Player$0$Images/Player.bmp
 Coin$0$Images/testCoinBackClear.PNG
 Wall$0$Images/Wall.bmp

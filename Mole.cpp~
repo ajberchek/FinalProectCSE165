@@ -33,6 +33,12 @@ void Mole::update(long Time, bool State)
 
 bool Mole::onCollision(Collideable * c)
 {
+	float collisionNewX = collisionBox->getX() - (collisionBox->getWidth()*0.05);
+	float collisionNewY = collisionBox->getY() - (collisionBox->getHeight()*0.05);
+	float collisionNewW = collisionBox->getWidth()*1.1;
+	float collisionNewH = collisionBox->getHeight()*1.1;
+
+	collisionBox->update(collisionNewX, collisionNewY, collisionNewW, collisionNewH);
 
 	return (collisionBox->isOverlap(c->collisionBox) || c->collisionBox->isOverlap(collisionBox))&& isUp;
 }

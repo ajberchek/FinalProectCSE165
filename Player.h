@@ -17,10 +17,14 @@
 class Player : public Collideable
 {
 	Stats* stats;
+
+	int const animPeriodMillis = 20;
+	int long lastAnimTimeMillis;
 	public:
 		Player(const Stats * stats);
 		Player();
 		bool onCollision(Collideable * c);
+		int draw();
 	
 		void update(const Stats * stats);
 		Stats* getStats();

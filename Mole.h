@@ -22,7 +22,7 @@ class Mole : public Collideable
 		bool getState();
 		void setTime(long Time);
 		void setState(bool State);
-		typedef enum moleStat{DOWN=0, ANGRY=1,RISING=2,FALLING=3} moleStatus; 
+		typedef enum moleStat{DOWN=0, ANGRY=1,RISING=2,FALLING=3, ATTACKING=4} moleStatus; 
 		moleStatus currentMoleStatus;
 };
 

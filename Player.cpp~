@@ -3,12 +3,10 @@
 Player::Player(const Stats * stat)
 {
 	stats = const_cast<Stats *>(stat);
-	lastAnimTimeMillis = 0;
 }
 Player::Player()
 {
 	stats = new Stats();
-	lastAnimTimeMillis = 0;
 }
 
 // Need Avery to explain/implement after all the other Collideable
@@ -57,15 +55,9 @@ Stats* Player::getStats()
 	return stats;
 }
 
-unsigned long long getPlayerTime()
-{
-chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
-	return (unsigned long long)ms.count();
-}
-
 int Player::draw()
 {
-	if(animationIndex == 1 && getPlayerTime()-lastAnimTimeMillis > animPeriodMillis)
+	if(animationIndex == 1 )
 	{
 		int currentIt = getAnim()->at(animationIndex)->it++;
 		int postDrawIt = Collideable::draw();
@@ -75,13 +67,7 @@ int Player::draw()
 			animationIndex = 0;
 			getAnim()->at(animationIndex)->it = 0;
 		}
-		lastAnimTimeMillis = getPlayerTime();
 	}
-	else
-	{
-		Collideable::draw();
-	}
-	return true;
 }
 
 

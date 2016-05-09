@@ -1,5 +1,4 @@
 #include "MoleLogic.h"
-#include "CollisionShape.h"
 #include <chrono>
 #include <math.h>
 
@@ -15,56 +14,6 @@ MoleLogic::MoleLogic(Player * p)
 
 void MoleLogic::randSelectState(Mole ** mole)
 {
-
-
-	if((*mole)->currentMoleStatus == Mole::moleStatus::ATTACKING)
-	{
-		if(playa->animationIndex == 0)
-		{
-			(*mole)->currentMoleStatus = Mole::moleStatus::ANGRY;
-			(*mole)->animationIndex = 1;
-			return;
-		}
-	}
-	if((*mole)->getState())
-	{
-		CollisionShape * ourCollisionBox = (*mole)->collisionBox;
-
-		float currentX = ourCollisionBox->getX();
-		float currentY = ourCollisionBox->getY();
-		float currentW = ourCollisionBox->getWidth();
-		float currentH = ourCollisionBox->getHeight();
-
-		float collisionNewX = ourCollisionBox->getX() - (ourCollisionBox->getWidth()*0.15);
-		float collisionNewY = ourCollisionBox->getY() - (ourCollisionBox->getHeight()*0.15);
-		float collisionNewW = ourCollisionBox->getWidth()*1.3;
-		float collisionNewH = ourCollisionBox->getHeight()*1.3;
-
-		ourCollisionBox->update(collisionNewX, collisionNewY, collisionNewW, collisionNewH);
-
-		(*mole)->collisionBox = ourCollisionBox;
-
-		if(playa->onCollision((*mole)))
-		{
-			cout << "******++++++++++ATTACK+++++++******" << endl;
-			(*mole)->currentMoleStatus = Mole::moleStatus::ATTACKING;
-			(*mole)->animationIndex = 4;
-			playa->animationIndex = 1;
-			playa->getAnim()->at(playa->animationIndex)->it = 0;
-			ourCollisionBox->update(currentX,currentY,currentW,currentH);
-
-			(*mole)->collisionBox = ourCollisionBox;
-			return;
-		}
-
-		ourCollisionBox->update(currentX,currentY,currentW,currentH);
-
-		(*mole)->collisionBox = ourCollisionBox;
-
-	}
-
-
-
 
 	chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
 

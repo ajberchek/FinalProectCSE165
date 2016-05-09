@@ -10,14 +10,14 @@ PROGRAM = glutapp
 #######################################################################
 
 # OPTFLAGS = -g  # for debug
-OPTFLAGS =
+OPTFLAGS = -std=c++11 -g
 CC       = g++
 CFLAGS   = -w $(OPTFLAGS)
 
 ifeq ($(strip $(OS)),Darwin)
 	LDFLAGS = -framework GLUT -framework OpenGL
 else
-	LDFLAGS = -lGL -lglut
+	LDFLAGS = -lGL -lSOIL -lglut
 endif
 
 #######################################################################

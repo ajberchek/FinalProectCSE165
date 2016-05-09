@@ -1,0 +1,12 @@
+The following are the symbols used to indicate the objects being created
+
+# Wall
+m Mole
+c Coin
+p Player
+d Door
+
+nn in its own line to create a new maze that will consist of the maze composed of the symbols from the line below the nn line.
+
+Any other symbols can be used in the file.
+	except for null values

@@ -1,0 +1,34 @@
+#ifndef COLLIDEABLE_H
+#define COLLIDEABLE_H
+#include <vector>
+#include "CollisionShape.h"
+#include "Animation.h"
+using namespace std;
+
+class Collideable
+{
+	float x, y, w, h, maxSpeed;
+	vector<Animation *> * anim;
+	public:
+		Collideable();
+		virtual ~Collideable();
+		virtual bool onCollision(Collideable * c) = 0;
+		virtual int draw()
+		{
+			//cout << "x,y,w,h: " << x << ", " << y << ", " << w << ", " << h << endl;
+			return anim->at(animationIndex)->animate(x,y,w,h);
+		}
+		//virtual void draw(const Animation  & a) = 0;				//changed from Animation *
+		void update(float x, float y, float w, float h);	//originally by Hang as (float x = x, float y = y, float w = w, float h = h);
+		float getX();
+		float getY();
+		float getW();
+		float getH();
+		float getSpeed();
+		void setAnim(vector<Animation *> * toAdd);
+		vector<Animation *> * getAnim();
+		CollisionShape * collisionBox;
+		int animationIndex;
+		int vecAnimationIndex;
+};
+#endif

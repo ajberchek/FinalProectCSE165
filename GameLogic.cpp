@@ -14,8 +14,11 @@ GameLogic::GameLogic()
 	animFactory = new AnimationFactory(CONFIG_FILENAME);
 	ccVec = loadLevel(LEVEL_FILENAME, animFactory);
 	lastTime = updateTime();
+	startTime = lastTime;
 	eventQueue = queue<GlutWindow::Event>();
 	moleLog = new MoleLogic(mainPlayer);
+	mainPlayer->getStats()->time = 60;
+	mainPlayer->getStats()->scores = 0;
 }
 
 vector<CollideableContainer *> * GameLogic::loadLevel(string levelFileName, AnimationFactory * animFact)
@@ -134,10 +137,12 @@ void GameLogic::update()
 					if(typeid(*collideableToCheck) == typeid(Mole))
 					{
 						//Increment hit count or launch the moles attack or something
+						ourPlayer->getStats()->scores -= 5;
 					}
 					else if(typeid(*collideableToCheck) == typeid(Coin))
 					{
 						(ourPlayer->getStats()->moleAttacks)++;
+						ourPlayer->getStats()->time += 2;
 						thisRowOfCollideables->erase(thisRowOfCollideables->begin() + j);
 						delete collideableToCheck;
 						actuallyCollided = false;
@@ -225,4 +230,17 @@ unsigned long long GameLogic::updateTime()
 {
 	chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
 	return (unsigned long long)ms.count();
+}
+unsigned long long GameLogic::getTime()
+{
+	timePass = (updateTime()-startTime);
+	timePass /= 1000;
+return mainPlayer->getStats()->time-timePass;
+}
+unsigned long long GameLogic::getScore()
+{
+	timePass = (updateTime()-startTime);
+	timePass /= 1000;
+	mainPlayer->getStats()->scores += timePass;
+return timePass;
 }

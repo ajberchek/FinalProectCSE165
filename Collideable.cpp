@@ -8,6 +8,7 @@ Collideable::Collideable()
 	h = 0;
 	maxSpeed = 0;
 	animationIndex = 0;
+	vecAnimationIndex = 0;
 }
 Collideable::~Collideable()
 {

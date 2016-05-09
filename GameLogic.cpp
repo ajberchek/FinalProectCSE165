@@ -2,7 +2,6 @@
 #include <chrono>
 #include <iostream>
 #include <string>
-#include "commonVariable.h"
 
 #define	CONFIG_FILENAME	"config.txt"
 #define LEVEL_FILENAME	"level.txt"
@@ -202,15 +201,15 @@ void GameLogic::update()
 				if(typeid(*collideableToCheck) == typeid(Mole))
 				{
 					//If it is up it draws the mole as up if it is down then it is down
-					collideableToCheck->draw(*collideableToCheck->getAnim()->at(((Mole *)collideableToCheck)->getState()));
+					collideableToCheck->draw();
 				}
 				else if(typeid(*collideableToCheck) == typeid(Player))
 				{
-					mainPlayer->draw(*collideableToCheck->getAnim()->at(0));
+					mainPlayer->draw();
 				}
 				else
 				{
-					collideableToCheck->draw(*collideableToCheck->getAnim()->at(0));
+					collideableToCheck->draw();
 				}
 
 				collideableToCheck->update(currentX, currentY, currentW, currentH);
@@ -224,23 +223,24 @@ void GameLogic::update()
 	//TODO: update mole logic
 
 }
-
-
-unsigned long long GameLogic::updateTime()
-{
-	chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
-	return (unsigned long long)ms.count();
-}
 unsigned long long GameLogic::getTime()
 {
 	timePass = (updateTime()-startTime);
 	timePass /= 1000;
-return mainPlayer->getStats()->time-timePass;
+	return mainPlayer->getStats()->time-timePass;
 }
 unsigned long long GameLogic::getScore()
 {
 	timePass = (updateTime()-startTime);
 	timePass /= 1000;
 	mainPlayer->getStats()->scores += timePass;
-return timePass;
+	return timePass;
 }
+
+unsigned long long GameLogic::updateTime()
+{
+	chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch());
+	return (unsigned long long)ms.count();
+}
+
+

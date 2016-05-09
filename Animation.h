@@ -2,6 +2,7 @@
 #define ANIMATION_H
 #include <vector>
 #include <GL/gl.h>
+#include "commonVariable.h"
 using namespace std;
 class Animation
 {
@@ -9,7 +10,7 @@ class Animation
 		Animation();
 		vector<GLuint *> * imgPtr;
 		int it;
-		void animate(float x, float y, float w, float h);
+		int animate(float x, float y, float w, float h);
 		void windowToScene(float &x, float &y);
 };
 #endif 

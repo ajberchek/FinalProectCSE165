@@ -233,8 +233,8 @@ unsigned long long GameLogic::getScore()
 {
 	timePass = (updateTime()-startTime);
 	timePass /= 1000;
-	mainPlayer->getStats()->scores += timePass;
-	return timePass;
+	//mainPlayer->getStats()->scores += timePass;
+	return mainPlayer->getStats()->scores + timePass;
 }
 
 unsigned long long GameLogic::updateTime()

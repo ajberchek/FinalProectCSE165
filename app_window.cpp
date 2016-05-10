@@ -14,7 +14,6 @@ float newH;
 float newW;
 bool resizeCalledAlready = false;
 
-
 GameLogic * gLogic;
 
 Animation *testAnim;

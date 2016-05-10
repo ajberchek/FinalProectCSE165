@@ -29,7 +29,7 @@ class Player : public Collideable
 		void update(const Stats * stats);
 		Stats* getStats();
 		void moveRelative(float xRel, float yRel); //This will be how much the player moves relative to his current position and will be multiplied by the speedRelativeToScreen variable and added to its current x and y values to get its new values.
-		int const invincibilityPeriodMillis = 1000;
+		int const invincibilityPeriodMillis = 2000;
 		int long lastCollisionTimeMillis;
 };
 

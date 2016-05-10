@@ -7,7 +7,7 @@
 #define LEVEL_FILENAME	"level.txt"
 
 
-#define START_SCREEN_PATH "Images/Screen/StartScreen.png"
+#define START_SCREEN_PATH "Images/Screen/StartScreen.bmp"
 #define OUT_OF_TIME_PATH "Images/Screen/OutOfTime.bmp"
 #define COMPLETE_PATH "Images/Screen/Success.bmp"
 
@@ -24,10 +24,6 @@ GameLogic::GameLogic()
 	mainPlayer->getStats()->time = 60;
 	mainPlayer->getStats()->scores = 0;
 	currentStatus = status::START_SCREEN;
-
-	startScreen = new GLuint;
-	outOfTime = new GLuint;
-	complete = new GLuint;
 
 	*startScreen = SOIL_load_OGL_texture
 		(
@@ -54,38 +50,6 @@ GameLogic::GameLogic()
 		);
 
 }
-
-void drawImg(GLuint * toDraw)
-{
-	glBindTexture(GL_TEXTURE_2D, *toDraw);
-
-
-	glEnable(GL_TEXTURE_2D);
-
-		
-	// Drawing the Texture
-	glBegin(GL_POLYGON);											// texCoord for tex, vertex for where to map
-	glTexCoord2f(0.0f, 1.0f);	glVertex2d(-1, 1);
-	glTexCoord2f(1.0f, 1.0f);	glVertex2d(1, 1);
-	glTexCoord2f(1.0f, 0.0f);	glVertex2d(1, -1);
-	glTexCoord2f(0.0f, 0.0f);	glVertex2d(-1, -1);
-	glEnd();
-	
-	// Fixing this code so there's no possibility of overflow
-
-	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	
-	glEnable(GL_ALPHA_TEST);
-	glAlphaFunc(GL_GREATER, 0.1);
-	
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	
-	glDisable(GL_TEXTURE_2D);
-}
-
 
 vector<CollideableContainer *> * GameLogic::loadLevel(string levelFileName, AnimationFactory * animFact)
 {
@@ -145,7 +109,6 @@ void GameLogic::update()
 			}
 		}
 		//draw the image for the start screen
-		drawImg(startScreen);
 
 	}	
 	else if(currentStatus == status::COMPLETE)
@@ -167,7 +130,6 @@ void GameLogic::update()
 				}
 			}
 		}
-		drawImg(complete);
 	}
 	else if(currentStatus == status::OUT_OF_TIME)
 	{
@@ -188,7 +150,6 @@ void GameLogic::update()
 				}
 			}
 		}
-		drawImg(outOfTime);
 	}
 
 	else
@@ -303,7 +264,6 @@ void GameLogic::update()
 							else
 							{
 								//Game Over
-								currentStatus = status::COMPLETE;
 							}
 												}
 					
@@ -374,7 +334,6 @@ signed long long GameLogic::getTime()
 	//cout<<"jaspal : "<<signed(mainPlayer->getStats()->time-timePass)<<endl;
 	if(signed(mainPlayer->getStats()->time-timePass) <= 0)
 	{
-		currentStatus = status::OUT_OF_TIME;
 		mainPlayer->getStats()->time = 0;
 		return 0;
 	}	

@@ -189,10 +189,24 @@ void AppWindow::draw ()
    		m -=1;
    		s += 60;
    	}*/
+
+
+	
+
+
    if(gLogic)
    {
 	   gLogic->update();
    }
+
+	glBegin( GL_POLYGON );
+	glColor3f (0,1,0);
+	glVertex2f (-1,1);
+	glVertex2f (1,1);
+	glVertex2f (1,-1);
+	glVertex2f (-1,-1);
+	glEnd();
+
    
    glFlush();         // flush the pipeline (usually not necessary)
    glutSwapBuffers(); // we were drawing to the back buffer, now bring it to the front

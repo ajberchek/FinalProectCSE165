@@ -35,16 +35,13 @@ int Animation::animate(float x, float y, float w, float h)
 	//cout << "Drawing on coordinates (x,y,w,h): " << x << ", " << y << ", " << w << ", " << h << endl;
 
 	// Binding Texture
-	glEnable(GL_TEXTURE_2D);
 	//glShadeModel(GL_SMOOTH);
 	glBindTexture(GL_TEXTURE_2D, *(imgPtr->at((it))));
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	
+
+	glEnable(GL_TEXTURE_2D);
+
+		
 	// Drawing the Texture
 	glBegin(GL_POLYGON);											// texCoord for tex, vertex for where to map
 	glTexCoord2f(0.0f, 1.0f);	glVertex2d(x, y);
@@ -54,7 +51,18 @@ int Animation::animate(float x, float y, float w, float h)
 	glEnd();
 	
 	// Fixing this code so there's no possibility of overflow
+
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.1);
+	
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+
 	
 	glDisable(GL_TEXTURE_2D);
 	

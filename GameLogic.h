@@ -22,8 +22,8 @@ class GameLogic
 		MoleLogic * moleLog;
 	public:
 		GameLogic();
-		unsigned long long getTime();
-		unsigned long long getScore();
+		signed long long getTime();
+		signed long long getScore();
 		queue<GlutWindow::Event> eventQueue;
 		void update();
 		Player * mainPlayer;

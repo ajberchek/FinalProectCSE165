@@ -50,6 +50,8 @@ chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::sy
 
 		if(playa->onCollision((*mole)) && currentTime-playa->lastCollisionTimeMillis > playa->invincibilityPeriodMillis)
 		{
+			//Mole is attacking
+			playa->getStats()->scores -= 5;
 			cout << "******++++++++++ATTACK+++++++******" << endl;
 			(*mole)->currentMoleStatus = Mole::moleStatus::ATTACKING;
 			(*mole)->animationIndex = 4;

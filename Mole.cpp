@@ -49,11 +49,9 @@ int Mole::draw()
 
 	int currentGlIndex = getAnim()->at(animationIndex)->it;
 	int newGlIndex = 0;
-	cout << "Mole draw: " << animationIndex << endl;
 	if((currentMoleStatus == RISING || currentMoleStatus == FALLING )&& getCurrentTime() - lastAnimTimeMillis > animPeriodMillis)
 	{
-		//cout << "**********************************" << endl;
-		cout << "***********inrementing index: " << ++getAnim()->at(animationIndex)->it << endl;
+		++getAnim()->at(animationIndex)->it;
 		newGlIndex = Collideable::draw();
 		lastAnimTimeMillis = getCurrentTime();
 	}

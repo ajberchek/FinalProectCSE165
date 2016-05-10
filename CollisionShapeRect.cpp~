@@ -21,7 +21,7 @@ bool CollisionShapeRect::isOverlap(CollisionShape * cs)
 		//std::cout<<"yesrect"<<std::endl;
 		/*if(x <= nonConstCS->getX() && x+width >= nonConstCS->getX())//checks the rectangle is inside the rectangle
 		{
-			//cout << "CHECKING A" << endl;
+			cout << "CHECKING A" << endl;
 			if(y <= nonConstCS->getY() && y+height >= nonConstCS->getY())
 			{
 				return true;

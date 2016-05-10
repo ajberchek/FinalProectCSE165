@@ -35,7 +35,7 @@ bool Player::onCollision(Collideable * c)
 		}
 		else 
 		{
-			//std::cout<<"Player colliding with player!!! How strange!"<<std::endl;
+			std::cout<<"Player colliding with player!!! How strange!"<<std::endl;
 		}
 		return true;
 	}
@@ -89,10 +89,10 @@ int Player::draw()
 
 void Player::moveRelative(float xRel, float yRel)
 {
-	//cout << endl;
-	//cout << "Attempting move to" << endl;
+	cout << endl;
+	cout << "Attempting move to" << endl;
 	Collideable::update(Collideable::getX() + SPEED_RELATIVE_TO_SCREEN*xRel, Collideable::getY() + SPEED_RELATIVE_TO_SCREEN*yRel, Collideable::getW(),Collideable::getH());
-	//cout << "Moved" << endl;
-	//cout << endl;
+	cout << "Moved" << endl;
+	cout << endl;
 	
 }

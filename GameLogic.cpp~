@@ -143,8 +143,8 @@ void GameLogic::update()
 					if(typeid(*collideableToCheck) == typeid(Coin))
 					{
 						(ourPlayer->getStats()->moleAttacks)++;
-						ourPlayer->getStats()->time += 4;
-						ourPlayer->getStats()->scores += 3;
+						ourPlayer->getStats()->time += 2;
+						ourPlayer->getStats()->scores += 2;
 						thisRowOfCollideables->erase(thisRowOfCollideables->begin() + j);
 						delete collideableToCheck;
 						actuallyCollided = false;

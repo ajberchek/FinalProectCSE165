@@ -46,7 +46,7 @@ void AppWindow::handle ( const Event& e )
    if ( e.type==Keyboard ) 
     switch ( e.key )
     { case ' ': // space bar
-	   //std::cout << "Space pressed.\n";
+	   std::cout << "Space pressed.\n";
        _markx = 1.5;
        _marky = 1.5;
        redraw();
@@ -63,7 +63,7 @@ void AppWindow::handle ( const Event& e )
     }
 
    if ( e.type==Menu )
-    { //std::cout<<"Menu Event: "<<e.menuev<<std::endl;
+    { std::cout<<"Menu Event: "<<e.menuev<<std::endl;
       rd=false; // no need to redraw
     }
 

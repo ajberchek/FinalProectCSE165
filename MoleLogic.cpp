@@ -52,6 +52,7 @@ chrono::milliseconds ms = chrono::duration_cast<chrono::milliseconds>(chrono::sy
 		{
 			//Mole is attacking
 			playa->getStats()->scores -= 5;
+			playa->getStats()->time -= 2;
 			cout << "******++++++++++ATTACK+++++++******" << endl;
 			(*mole)->currentMoleStatus = Mole::moleStatus::ATTACKING;
 			(*mole)->animationIndex = 4;

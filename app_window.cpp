@@ -46,7 +46,7 @@ void AppWindow::handle ( const Event& e )
    if ( e.type==Keyboard ) 
     switch ( e.key )
     { case ' ': // space bar
-	   std::cout << "Space pressed.\n";
+	   //std::cout << "Space pressed.\n";
        _markx = 1.5;
        _marky = 1.5;
        redraw();
@@ -63,7 +63,7 @@ void AppWindow::handle ( const Event& e )
     }
 
    if ( e.type==Menu )
-    { std::cout<<"Menu Event: "<<e.menuev<<std::endl;
+    { //std::cout<<"Menu Event: "<<e.menuev<<std::endl;
       rd=false; // no need to redraw
     }
 
@@ -90,9 +90,9 @@ void AppWindow::handle ( const Event& e )
 void AppWindow::resize ( int w, int h )
  {
    // Define that OpenGL should use the whole window for rendering
-   cout << "resize called: " << endl;
-   cout << "Resize to this width: " << w << endl;
-   cout << "Resize to this height: " << h << endl;
+   //cout << "resize called: " << endl;
+   //cout << "Resize to this width: " << w << endl;
+   //cout << "Resize to this height: " << h << endl;
    glViewport( 0, 0, w, h );
    _w=w; _h=h;
    newW = w;

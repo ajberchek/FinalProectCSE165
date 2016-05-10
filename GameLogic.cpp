@@ -92,7 +92,7 @@ void GameLogic::update()
 
 	if(currentEvent.type == GlutWindow::SpecialKey)
 	{
-		cout << "***Went into key check***" << endl;
+		//cout << "***Went into key check***" << endl;
 		switch(currentEvent.key)
 		{
 			case GLUT_KEY_LEFT:
@@ -143,7 +143,8 @@ void GameLogic::update()
 					if(typeid(*collideableToCheck) == typeid(Coin))
 					{
 						(ourPlayer->getStats()->moleAttacks)++;
-						ourPlayer->getStats()->time += 2;
+						ourPlayer->getStats()->time += 4;
+						ourPlayer->getStats()->scores += 3;
 						thisRowOfCollideables->erase(thisRowOfCollideables->begin() + j);
 						delete collideableToCheck;
 						actuallyCollided = false;
@@ -229,7 +230,7 @@ signed long long GameLogic::getTime()
 {
 	timePass = signed(updateTime()-startTime);
 	timePass /= 1000;
-	cout<<"jaspal : "<<signed(mainPlayer->getStats()->time-timePass)<<endl;
+	//cout<<"jaspal : "<<signed(mainPlayer->getStats()->time-timePass)<<endl;
 	if(signed(mainPlayer->getStats()->time-timePass) <= 0)
 	{
 		mainPlayer->getStats()->time = 0;
@@ -240,19 +241,13 @@ signed long long GameLogic::getTime()
 }
 signed long long GameLogic::getScore()
 {
-	timePass = signed(updateTime()-startTime);
-	timePass /= 1000;
-	cout<<"signh : "<<signed(mainPlayer->getStats()->scores + timePass)<<endl;
-	//mainPlayer->getStats()->scores += timePass;
-	if(signed(mainPlayer->getStats()->scores + timePass) <= 0)
+	if(signed(mainPlayer->getStats()->scores) <= 0)
 	{
 		mainPlayer->getStats()->scores = 0;
 		return 0;
-	}	
-	else
-	{
-		return signed(mainPlayer->getStats()->scores + timePass);
 	}
+		
+return signed(mainPlayer->getStats()->scores);
 }
 
 unsigned long long GameLogic::updateTime()

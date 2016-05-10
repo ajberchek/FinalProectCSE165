@@ -68,17 +68,17 @@ int Mole::draw()
 		//cout << "animationIndex was: " << animationIndex << endl;
 		if(currentMoleStatus == RISING)
 		{
-			cout << "THE MOLE IS RISINGGGGA;FJSAD;LFAJEWO;RHAJEWOSFJAEWSO;FJAEWOSIFHESADLOGHAO;" << endl;
+			//cout << "THE MOLE IS RISINGGGGA;FJSAD;LFAJEWO;RHAJEWOSFJAEWSO;FJAEWOSIFHESADLOGHAO;" << endl;
 			animationIndex = 1;
 			currentMoleStatus = ANGRY;
 		}
 		else if(currentMoleStatus == FALLING)
 		{
-			cout << "TEHRE GOES DA MOLE FALLING AGAIN!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+			//cout << "TEHRE GOES DA MOLE FALLING AGAIN!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 			animationIndex = 0;
 			currentMoleStatus = DOWN;
 		}
-		cout << "animationIndex is now: " << animationIndex << endl;
+		//cout << "animationIndex is now: " << animationIndex << endl;
 	}
 	return true;
 }

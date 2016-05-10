@@ -25,11 +25,11 @@ void AssignPositions(CollideableContainer ** ccPtr, int maxTextWidth, int lineCo
 
 	(*ccPtr)->updateScreenSize(newW, newH);
 
-	cout << "Width of screen: " << newW << endl;
-	cout << "Hight of screen: " << newH << endl;
+	//cout << "Width of screen: " << newW << endl;
+	//cout << "Hight of screen: " << newH << endl;
 
-	cout << "Text Width" << maxTextWidth << endl;
-	cout << "Line count: " << lineCount << endl;
+	//cout << "Text Width" << maxTextWidth << endl;
+	//cout << "Line count: " << lineCount << endl;
 
 	for(int i = 0; i < cc->collideableFieldPtr->size(); ++i)
 	{
@@ -61,7 +61,7 @@ void LevelBuilderAlgorithmText::genLvl(vector<CollideableContainer *> * ccVec)
 	int lineCount = 0;
 	int maxTextWidth = 0;
 
-	cout << "Generating Level with filepath: " << fileForLvl << endl;
+	//cout << "Generating Level with filepath: " << fileForLvl << endl;
 	string line;
 	ifstream mazeFile(fileForLvl.c_str());
 
@@ -71,12 +71,12 @@ void LevelBuilderAlgorithmText::genLvl(vector<CollideableContainer *> * ccVec)
 	{
 		while(getline(mazeFile,line))
 		{
-			cout << line << endl;
-			cout << cc->collideableFieldPtr->size() << endl;
+			//cout << line << endl;
+			//cout << cc->collideableFieldPtr->size() << endl;
 			if(line == "nn" || line == "nn\n")
 			{
-				cout << line << endl;
-				cout << "*****************newLine***********************" << endl;
+				//cout << line << endl;
+				//cout << "*****************newLine***********************" << endl;
 				AssignPositions(&cc,maxTextWidth,lineCount);
 				ccVec->push_back(cc);
 				cc = new CollideableContainer();
@@ -119,7 +119,7 @@ void LevelBuilderAlgorithmText::genLvl(vector<CollideableContainer *> * ccVec)
 				if(i+1 > maxTextWidth)
 				{
 					maxTextWidth = i+1;
-					cout << "New Max Width of data read: " << maxTextWidth << endl;
+					//cout << "New Max Width of data read: " << maxTextWidth << endl;
 				}
 
 			}

@@ -13,15 +13,15 @@ MazeAlgorithmText::MazeAlgorithmText(string mazeFile)
 void MazeAlgorithmText::genMaze(CollideableContainer * cc)
 {
 	int count = 0;
-	cout << "Generating maze with filepath: " << fileForMaze << endl;
+	//cout << "Generating maze with filepath: " << fileForMaze << endl;
 	string line;
 	ifstream mazeFile(fileForMaze.c_str());
 	if(mazeFile.is_open())
 	{
 		while(getline(mazeFile,line))
 		{
-			cout << line << endl;
-			cout << cc->collideableFieldPtr->size() << endl;
+			//cout << line << endl;
+			//cout << cc->collideableFieldPtr->size() << endl;
 			if(cc->collideableFieldPtr->size() <= count)
 			{
 				cc->collideableFieldPtr->push_back(new vector<Collideable *>);

@@ -12,6 +12,13 @@ float newH;
 float newW;
 bool resizeCalledAlready = false;
 
+Gluint = SOIL_load_OGL_texture
+				(
+					arrPair[2].c_str(), 
+					SOIL_LOAD_AUTO, 
+					SOIL_CREATE_NEW_ID,
+					SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_NTSC_SAFE_RGB
+				);
 
 GameLogic * gLogic;
 
@@ -28,6 +35,7 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    s = 0;
    time = "";
    score = "";
+   
  }
 
 // mouse events are in window coordinates, but your scene is in [0,1]x[0,1],

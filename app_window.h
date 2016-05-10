@@ -6,6 +6,7 @@
 # include "glut_window.h"
 //# include "Animation.h"
 # include "SOIL.h"
+#include <irrKlang.h>
 #include <iostream>
 #include<string.h>
 
